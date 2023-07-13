@@ -1,0 +1,514 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE9202072A57A9C500A6F44D /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9202062A57A9C500A6F44D /* KeyboardViewController.swift */; };
+		CE92020B2A57A9C500A6F44D /* SCK.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CE9202042A57A9C500A6F44D /* SCK.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CE9202102A57AF4A00A6F44D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92020F2A57AF4A00A6F44D /* KeyboardView.swift */; };
+		CE9202122A57AF8F00A6F44D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92020F2A57AF4A00A6F44D /* KeyboardView.swift */; };
+		CE9202142A57B6A100A6F44D /* NextKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9202132A57B6A100A6F44D /* NextKeyboardButton.swift */; };
+		CE9202152A57B86700A6F44D /* NextKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9202132A57B6A100A6F44D /* NextKeyboardButton.swift */; };
+		CED20B7E2A57C05600447667 /* View+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED20B7D2A57C05600447667 /* View+BackgroundColor.swift */; };
+		CEE26E412A418286009ACA83 /* ScienceCustomKeyboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE26E402A418285009ACA83 /* ScienceCustomKeyboardApp.swift */; };
+		CEE26E432A418286009ACA83 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE26E422A418286009ACA83 /* ContentView.swift */; };
+		CEE26E452A418286009ACA83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE26E442A418286009ACA83 /* Assets.xcassets */; };
+		CEE26E482A418286009ACA83 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE26E472A418286009ACA83 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE9202092A57A9C500A6F44D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEE26E352A418285009ACA83 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE9202032A57A9C500A6F44D;
+			remoteInfo = SCK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CEE26E5D2A41829B009ACA83 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CE92020B2A57A9C500A6F44D /* SCK.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CE9202042A57A9C500A6F44D /* SCK.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SCK.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9202062A57A9C500A6F44D /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		CE9202082A57A9C500A6F44D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE92020F2A57AF4A00A6F44D /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		CE9202132A57B6A100A6F44D /* NextKeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextKeyboardButton.swift; sourceTree = "<group>"; };
+		CED20B7D2A57C05600447667 /* View+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+BackgroundColor.swift"; sourceTree = "<group>"; };
+		CEE26E3D2A418285009ACA83 /* ScienceCustomKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScienceCustomKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE26E402A418285009ACA83 /* ScienceCustomKeyboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceCustomKeyboardApp.swift; sourceTree = "<group>"; };
+		CEE26E422A418286009ACA83 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CEE26E442A418286009ACA83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEE26E472A418286009ACA83 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE9202012A57A9C500A6F44D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEE26E3A2A418285009ACA83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE9202052A57A9C500A6F44D /* SCK */ = {
+			isa = PBXGroup;
+			children = (
+				CE9202062A57A9C500A6F44D /* KeyboardViewController.swift */,
+				CED20B7D2A57C05600447667 /* View+BackgroundColor.swift */,
+				CE9202132A57B6A100A6F44D /* NextKeyboardButton.swift */,
+				CE92020F2A57AF4A00A6F44D /* KeyboardView.swift */,
+				CE9202082A57A9C500A6F44D /* Info.plist */,
+			);
+			path = SCK;
+			sourceTree = "<group>";
+		};
+		CEE26E342A418285009ACA83 = {
+			isa = PBXGroup;
+			children = (
+				CEE26E3F2A418285009ACA83 /* ScienceCustomKeyboard */,
+				CE9202052A57A9C500A6F44D /* SCK */,
+				CEE26E3E2A418285009ACA83 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CEE26E3E2A418285009ACA83 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEE26E3D2A418285009ACA83 /* ScienceCustomKeyboard.app */,
+				CE9202042A57A9C500A6F44D /* SCK.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEE26E3F2A418285009ACA83 /* ScienceCustomKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				CEE26E402A418285009ACA83 /* ScienceCustomKeyboardApp.swift */,
+				CEE26E422A418286009ACA83 /* ContentView.swift */,
+				CEE26E442A418286009ACA83 /* Assets.xcassets */,
+				CEE26E462A418286009ACA83 /* Preview Content */,
+			);
+			path = ScienceCustomKeyboard;
+			sourceTree = "<group>";
+		};
+		CEE26E462A418286009ACA83 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CEE26E472A418286009ACA83 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE9202032A57A9C500A6F44D /* SCK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE92020C2A57A9C500A6F44D /* Build configuration list for PBXNativeTarget "SCK" */;
+			buildPhases = (
+				CE9202002A57A9C500A6F44D /* Sources */,
+				CE9202012A57A9C500A6F44D /* Frameworks */,
+				CE9202022A57A9C500A6F44D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SCK;
+			productName = SCK;
+			productReference = CE9202042A57A9C500A6F44D /* SCK.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		CEE26E3C2A418285009ACA83 /* ScienceCustomKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEE26E4B2A418286009ACA83 /* Build configuration list for PBXNativeTarget "ScienceCustomKeyboard" */;
+			buildPhases = (
+				CEE26E392A418285009ACA83 /* Sources */,
+				CEE26E3A2A418285009ACA83 /* Frameworks */,
+				CEE26E3B2A418285009ACA83 /* Resources */,
+				CEE26E5D2A41829B009ACA83 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE92020A2A57A9C500A6F44D /* PBXTargetDependency */,
+			);
+			name = ScienceCustomKeyboard;
+			productName = ScienceCustomKeyboard;
+			productReference = CEE26E3D2A418285009ACA83 /* ScienceCustomKeyboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEE26E352A418285009ACA83 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					CE9202032A57A9C500A6F44D = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					CEE26E3C2A418285009ACA83 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = CEE26E382A418285009ACA83 /* Build configuration list for PBXProject "ScienceCustomKeyboard" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CEE26E342A418285009ACA83;
+			productRefGroup = CEE26E3E2A418285009ACA83 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEE26E3C2A418285009ACA83 /* ScienceCustomKeyboard */,
+				CE9202032A57A9C500A6F44D /* SCK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE9202022A57A9C500A6F44D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEE26E3B2A418285009ACA83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEE26E482A418286009ACA83 /* Preview Assets.xcassets in Resources */,
+				CEE26E452A418286009ACA83 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE9202002A57A9C500A6F44D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9202072A57A9C500A6F44D /* KeyboardViewController.swift in Sources */,
+				CE9202102A57AF4A00A6F44D /* KeyboardView.swift in Sources */,
+				CED20B7E2A57C05600447667 /* View+BackgroundColor.swift in Sources */,
+				CE9202142A57B6A100A6F44D /* NextKeyboardButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEE26E392A418285009ACA83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9202122A57AF8F00A6F44D /* KeyboardView.swift in Sources */,
+				CEE26E432A418286009ACA83 /* ContentView.swift in Sources */,
+				CEE26E412A418286009ACA83 /* ScienceCustomKeyboardApp.swift in Sources */,
+				CE9202152A57B86700A6F44D /* NextKeyboardButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE92020A2A57A9C500A6F44D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE9202032A57A9C500A6F44D /* SCK */;
+			targetProxy = CE9202092A57A9C500A6F44D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CE92020D2A57A9C500A6F44D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.3;
+				DEVELOPMENT_TEAM = EN558C9YRS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SCK/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SCK;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = murikinmotsunonituke.ScienceCustomKeyboard.SCK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE92020E2A57A9C500A6F44D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.3;
+				DEVELOPMENT_TEAM = EN558C9YRS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SCK/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SCK;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = murikinmotsunonituke.ScienceCustomKeyboard.SCK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CEE26E492A418286009ACA83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CEE26E4A2A418286009ACA83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CEE26E4C2A418286009ACA83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.3;
+				DEVELOPMENT_ASSET_PATHS = "\"ScienceCustomKeyboard/Preview Content\"";
+				DEVELOPMENT_TEAM = EN558C9YRS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = murikinmotsunonituke.ScienceCustomKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEE26E4D2A418286009ACA83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.3;
+				DEVELOPMENT_ASSET_PATHS = "\"ScienceCustomKeyboard/Preview Content\"";
+				DEVELOPMENT_TEAM = EN558C9YRS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = murikinmotsunonituke.ScienceCustomKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE92020C2A57A9C500A6F44D /* Build configuration list for PBXNativeTarget "SCK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE92020D2A57A9C500A6F44D /* Debug */,
+				CE92020E2A57A9C500A6F44D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEE26E382A418285009ACA83 /* Build configuration list for PBXProject "ScienceCustomKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEE26E492A418286009ACA83 /* Debug */,
+				CEE26E4A2A418286009ACA83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEE26E4B2A418286009ACA83 /* Build configuration list for PBXNativeTarget "ScienceCustomKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEE26E4C2A418286009ACA83 /* Debug */,
+				CEE26E4D2A418286009ACA83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEE26E352A418285009ACA83 /* Project object */;
+}
