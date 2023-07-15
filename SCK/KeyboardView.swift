@@ -27,6 +27,34 @@ struct KeyboardView: View {
     @State var key8 = "₈"
     @State var key9 = "₉"
     
+    @State var keyA = "ₐ"
+    @State var keyB = "ᵇ"
+    @State var keyC = "ᶜ"
+    @State var keyD = "ᵈ"
+    @State var keyE = "ᵉ"
+    @State var keyF = "ᶠ"
+    @State var keyG = "ᵍ"
+    @State var keyH = "ʰ"
+    @State var keyI = "ᶦ"
+    @State var keyJ = "ʲ"
+    @State var keyK = "ᵏ"
+    @State var keyL = "ˡ"
+    @State var keyM = "ᵐ"
+    @State var keyN = "ⁿ"
+    @State var keyO = "ᵒ"
+    @State var keyP = "ᵖ"
+    @State var keyQ = "ᑫ"
+    @State var keyR = "ʳ"
+    @State var keyS = "ˢ"
+    @State var keyT = "ᵗ"
+    @State var keyU = "ᵘ"
+    @State var keyV = "ᵛ"
+    @State var keyW = "ʷ"
+    @State var keyX = "ˣ"
+    @State var keyY = "ʸ"
+    @State var keyZ = "ᶻ"
+     
+    
     @State var keyPlas = "₊"
     @State var keyMinus = "₋"
     @State var keyEqual = "₌"
@@ -42,80 +70,258 @@ struct KeyboardView: View {
                 Group {
                     
                     // Input Text
-                    
+                    if KeyboardNumber == 0 || KeyboardNumber == 1{
+                        Button {
+                            inputTextAction(key1)
+                        } label: {
+                            Text("1")
+                                .frame(width: 30, height: 44)
+                        }
+                        
+                        Button {
+                            inputTextAction(key2)
+                        } label: {
+                            Text("2")
+                                .frame(width: 30, height: 44)
+                        }
+                        
+                        Button {
+                            inputTextAction(key3)
+                        } label: {
+                            Text("3")
+                                .frame(width: 30, height: 44)
+                        }
+                        
+                        Button {
+                            inputTextAction(key4)
+                        } label: {
+                            Text("4")
+                                .frame(width: 30, height: 44)
+                        }
+                        
+                        Button {
+                            inputTextAction(key5)
+                        } label: {
+                            Text("5")
+                                .frame(width: 30, height: 44)
+                        }
+                        
+                        Button {
+                            inputTextAction(key6)
+                        } label: {
+                            Text("6")
+                                .frame(width: 30, height: 44)
+                        }
+                        
+                        Button {
+                            inputTextAction(key7)
+                        } label: {
+                            Text("7")
+                                .frame(width: 30, height: 44)
+                        }
+                        
+                        Button {
+                            inputTextAction(key8)
+                        } label: {
+                            Text("8")
+                                .frame(width: 30, height: 44)
+                        }
+                        
+                        Button {
+                            inputTextAction(key9)
+                        } label: {
+                            Text("9")
+                                .frame(width: 30, height: 44)
+                        }
+                        
+                        Button {
+                            inputTextAction(key0)
+                        } label: {
+                            Text("0")
+                                .frame(width: 30, height: 44)
+                        }
+                    }
+                }
+                .background(Color(uiColor: .systemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
+            HStack{
+                Group {
                     Button {
-                        inputTextAction(key1)
+                        inputTextAction(keyQ)
                     } label: {
-                        Text("1")
+                        Text("q")
                             .frame(width: 30, height: 44)
                     }
-                    
                     Button {
-                        inputTextAction(key2)
+                        inputTextAction(keyW)
                     } label: {
-                        Text("2")
+                        Text("w")
                             .frame(width: 30, height: 44)
                     }
-                    
                     Button {
-                        inputTextAction(key3)
+                        inputTextAction(keyE)
                     } label: {
-                        Text("3")
+                        Text("e")
                             .frame(width: 30, height: 44)
                     }
-                    
                     Button {
-                        inputTextAction(key4)
+                        inputTextAction(keyR)
                     } label: {
-                        Text("4")
+                        Text("r")
                             .frame(width: 30, height: 44)
                     }
-                    
                     Button {
-                        inputTextAction(key5)
+                        inputTextAction(keyT)
                     } label: {
-                        Text("5")
+                        Text("t")
                             .frame(width: 30, height: 44)
                     }
-                    
                     Button {
-                        inputTextAction(key6)
+                        inputTextAction(keyY)
                     } label: {
-                        Text("6")
+                        Text("y")
                             .frame(width: 30, height: 44)
                     }
-                    
                     Button {
-                        inputTextAction(key7)
+                        inputTextAction(keyU)
                     } label: {
-                        Text("7")
+                        Text("u")
                             .frame(width: 30, height: 44)
                     }
-                    
                     Button {
-                        inputTextAction(key8)
+                        inputTextAction(keyI)
                     } label: {
-                        Text("8")
+                        Text("i")
                             .frame(width: 30, height: 44)
                     }
-                    
                     Button {
-                        inputTextAction(key9)
+                        inputTextAction(keyO)
                     } label: {
-                        Text("9")
+                        Text("o")
                             .frame(width: 30, height: 44)
                     }
-                    
                     Button {
-                        inputTextAction(key0)
+                        inputTextAction(keyP)
                     } label: {
-                        Text("0")
+                        Text("p")
                             .frame(width: 30, height: 44)
                     }
                 }
                 .background(Color(uiColor: .systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
             }
+            
+            HStack{
+                Group {
+                    Button {
+                        inputTextAction(keyA)
+                    } label: {
+                        Text("a")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyS)
+                    } label: {
+                        Text("s")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyD)
+                    } label: {
+                        Text("d")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyF)
+                    } label: {
+                        Text("f")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyG)
+                    } label: {
+                        Text("g")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyH)
+                    } label: {
+                        Text("h")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyJ)
+                    } label: {
+                        Text("j")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyK)
+                    } label: {
+                        Text("k")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyL)
+                    } label: {
+                        Text("l")
+                            .frame(width: 30, height: 44)
+                    }
+                }
+                .background(Color(uiColor: .systemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
+            
+            HStack{
+                Group {
+                    Button {
+                        inputTextAction(keyA)
+                    } label: {
+                        Text("a")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyS)
+                    } label: {
+                        Text("s")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyD)
+                    } label: {
+                        Text("d")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyF)
+                    } label: {
+                        Text("f")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyG)
+                    } label: {
+                        Text("g")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyH)
+                    } label: {
+                        Text("h")
+                            .frame(width: 30, height: 44)
+                    }
+                    Button {
+                        inputTextAction(keyJ)
+                    } label: {
+                        Text("j")
+                            .frame(width: 30, height: 44)
+                    }
+                }
+                .background(Color(uiColor: .systemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
+            
             HStack{
                 Group {
                     
@@ -157,6 +363,7 @@ struct KeyboardView: View {
                 .background(Color(uiColor: .systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
             }
+            
             HStack{
                 // Next Keybaord
                 if needsInputModeSwitchKey {
