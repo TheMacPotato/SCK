@@ -28,31 +28,31 @@ struct KeyboardView: View {
     @State var key9 = "₉"
     
     @State var keyA = "ₐ"
-    @State var keyB = "ᵇ"
-    @State var keyC = "ᶜ"
-    @State var keyD = "ᵈ"
-    @State var keyE = "ᵉ"
-    @State var keyF = "ᶠ"
-    @State var keyG = "ᵍ"
-    @State var keyH = "ʰ"
-    @State var keyI = "ᶦ"
-    @State var keyJ = "ʲ"
-    @State var keyK = "ᵏ"
-    @State var keyL = "ˡ"
-    @State var keyM = "ᵐ"
-    @State var keyN = "ⁿ"
-    @State var keyO = "ᵒ"
-    @State var keyP = "ᵖ"
-    @State var keyQ = "ᑫ"
-    @State var keyR = "ʳ"
-    @State var keyS = "ˢ"
-    @State var keyT = "ᵗ"
-    @State var keyU = "ᵘ"
-    @State var keyV = "ᵛ"
-    @State var keyW = "ʷ"
-    @State var keyX = "ˣ"
-    @State var keyY = "ʸ"
-    @State var keyZ = "ᶻ"
+    @State var keyB = ""
+    @State var keyC = ""
+    @State var keyD = ""
+    @State var keyE = "ₑ"
+    @State var keyF = ""
+    @State var keyG = ""
+    @State var keyH = "ₕ"
+    @State var keyI = "ᵢ"
+    @State var keyJ = "ⱼ"
+    @State var keyK = "ₖ"
+    @State var keyL = "ₗ"
+    @State var keyM = "ₘ"
+    @State var keyN = "ₙ"
+    @State var keyO = "ₒ"
+    @State var keyP = "ₚ"
+    @State var keyQ = ""
+    @State var keyR = "ᵣ"
+    @State var keyS = "ₛ"
+    @State var keyT = "ₜ"
+    @State var keyU = "ᵤ"
+    @State var keyV = "ᵥ"
+    @State var keyW = ""
+    @State var keyX = "ₓ"
+    @State var keyY = ""
+    @State var keyZ = ""
      
     
     @State var keyPlas = "₊"
@@ -145,19 +145,18 @@ struct KeyboardView: View {
                 .background(Color(uiColor: .systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
             }
+            
             HStack{
                 Group {
                     Button {
                         inputTextAction(keyQ)
                     } label: {
-                        Text("q")
-                            .frame(width: 30, height: 44)
+                        keyLine(keyString: "q")
                     }
                     Button {
                         inputTextAction(keyW)
                     } label: {
-                        Text("w")
-                            .frame(width: 30, height: 44)
+                        keyLine(keyString: "w")
                     }
                     Button {
                         inputTextAction(keyE)
@@ -180,8 +179,7 @@ struct KeyboardView: View {
                     Button {
                         inputTextAction(keyY)
                     } label: {
-                        Text("y")
-                            .frame(width: 30, height: 44)
+                        keyLine(keyString: "y")
                     }
                     Button {
                         inputTextAction(keyU)
@@ -229,20 +227,17 @@ struct KeyboardView: View {
                     Button {
                         inputTextAction(keyD)
                     } label: {
-                        Text("d")
-                            .frame(width: 30, height: 44)
+                        keyLine(keyString: "d")
                     }
                     Button {
                         inputTextAction(keyF)
                     } label: {
-                        Text("f")
-                            .frame(width: 30, height: 44)
+                        keyLine(keyString: "f")
                     }
                     Button {
                         inputTextAction(keyG)
                     } label: {
-                        Text("g")
-                            .frame(width: 30, height: 44)
+                        keyLine(keyString: "g")
                     }
                     Button {
                         inputTextAction(keyH)
@@ -276,45 +271,42 @@ struct KeyboardView: View {
             HStack{
                 Group {
                     Button {
-                        inputTextAction(keyA)
+                        inputTextAction(keyZ)
                     } label: {
-                        Text("a")
+                        keyLine(keyString: "z")
+                    }
+                    Button {
+                        inputTextAction(keyX)
+                    } label: {
+                        Text("x")
                             .frame(width: 30, height: 44)
                     }
                     Button {
-                        inputTextAction(keyS)
+                        inputTextAction(keyC)
                     } label: {
-                        Text("s")
+                        keyLine(keyString: "c")
+                    }
+                    Button {
+                        inputTextAction(keyV)
+                    } label: {
+                        Text("v")
                             .frame(width: 30, height: 44)
                     }
                     Button {
-                        inputTextAction(keyD)
+                        inputTextAction(keyB)
                     } label: {
-                        Text("d")
+                        keyLine(keyString: "b")
+                    }
+                    Button {
+                        inputTextAction(keyN)
+                    } label: {
+                        Text("n")
                             .frame(width: 30, height: 44)
                     }
                     Button {
-                        inputTextAction(keyF)
+                        inputTextAction(keyM)
                     } label: {
-                        Text("f")
-                            .frame(width: 30, height: 44)
-                    }
-                    Button {
-                        inputTextAction(keyG)
-                    } label: {
-                        Text("g")
-                            .frame(width: 30, height: 44)
-                    }
-                    Button {
-                        inputTextAction(keyH)
-                    } label: {
-                        Text("h")
-                            .frame(width: 30, height: 44)
-                    }
-                    Button {
-                        inputTextAction(keyJ)
-                    } label: {
-                        Text("j")
+                        Text("m")
                             .frame(width: 30, height: 44)
                     }
                 }
@@ -432,8 +424,20 @@ struct KeyboardView: View {
             }
         }
         .foregroundColor(Color(uiColor: .label))
-        .frame(height: 160)
+        .frame(height: 320)
     }
+    
+    func keyLine(keyString : String) -> some View {
+        if KeyboardNumber == 0 {
+            return Text("\(keyString)")
+                .strikethrough()
+                .frame(width: 30, height: 44)
+        } else {
+            return Text("\(keyString)")
+                .frame(width: 30, height: 44)
+        }
+    }
+    
     func buttonAction() {
         if KeyboardNumber == 0 {
             key0 = "₀"
@@ -452,6 +456,33 @@ struct KeyboardView: View {
             keyEqual = "₌"
             keyBracketsS = "₍"
             keyBracketsE = "₎"
+            
+            keyA = "ₐ"
+            keyB = ""
+            keyC = ""
+            keyD = ""
+            keyE = "ₑ"
+            keyF = ""
+            keyG = ""
+            keyH = "ₕ"
+            keyI = "ᵢ"
+            keyJ = "ⱼ"
+            keyK = "ₖ"
+            keyL = "ₗ"
+            keyM = "ₘ"
+            keyN = "ₙ"
+            keyO = "ₒ"
+            keyP = "ₚ"
+            keyQ = ""
+            keyR = "ᵣ"
+            keyS = "ₛ"
+            keyT = "ₜ"
+            keyU = "ᵤ"
+            keyV = "ᵥ"
+            keyW = ""
+            keyX = "ₓ"
+            keyY = ""
+            keyZ = ""
         } else if KeyboardNumber == 1 {
             key0 = "⁰"
             key1 = "¹"
@@ -469,6 +500,33 @@ struct KeyboardView: View {
             keyEqual = "⁼"
             keyBracketsS = "⁽"
             keyBracketsE = "⁾"
+            
+            keyA = "ᵃ"
+            keyB = "ᵇ"
+            keyC = "ᶜ"
+            keyD = "ᵈ"
+            keyE = "ᵉ"
+            keyF = "ᶠ"
+            keyG = "ᵍ"
+            keyH = "ʰ"
+            keyI = "ᶦ"
+            keyJ = "ʲ"
+            keyK = "ᵏ"
+            keyL = "ˡ"
+            keyM = "ᵐ"
+            keyN = "ⁿ"
+            keyO = "ᵒ"
+            keyP = "ᵖ"
+            keyQ = "ᑫ"
+            keyR = "ʳ"
+            keyS = "ˢ"
+            keyT = "ᵗ"
+            keyU = "ᵘ"
+            keyV = "ᵛ"
+            keyW = "ʷ"
+            keyX = "ˣ"
+            keyY = "ʸ"
+            keyZ = "ᶻ"
         } else if KeyboardNumber == 2 {
             key0 = "₀"
             key1 = "₁"
