@@ -14,8 +14,10 @@ struct KeyboardView: View {
     let nextKeyboardAction: Selector
     let inputTextAction: (String) -> Void
     let deleteTextAction: () -> Void
+    let moveRightAction: () -> Void
+    let moveLeftAction: () -> Void
     @State var KeyboardNumber: Int = 0
-    // 0 = default, 1 = subScript, 2 = superScript, 3 = greek, 4 = science
+    // 0 = default, 1 = subScript, 2 = superScript, 3 = greek, 4 = math, 5 = science
     
     @State var shiftSwitch = 0
     
@@ -79,7 +81,7 @@ struct KeyboardView: View {
                     
                     // Input Text
                     
-                    if KeyboardNumber != 4{
+                    if KeyboardNumber != 4 && KeyboardNumber != 5{
                         Button {
                             inputTextAction(inputTextChange(alphabet: key1))
                         } label: {
@@ -140,6 +142,8 @@ struct KeyboardView: View {
                             keyDisplay(keyString: "0")
                         }
                     } else if KeyboardNumber == 4 {
+                        
+                    } else if KeyboardNumber == 5 {
                         
                     }
                 }
@@ -218,7 +222,7 @@ struct KeyboardView: View {
             
             HStack{
                 Group {
-                    if KeyboardNumber != 4 {
+                    if KeyboardNumber != 4 && KeyboardNumber != 5{
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyQ))
                         } label: {
@@ -279,7 +283,7 @@ struct KeyboardView: View {
             
             HStack{
                 Group {
-                    if KeyboardNumber != 4 {
+                    if KeyboardNumber != 4 && KeyboardNumber != 5 {
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyA))
                         } label: {
@@ -328,6 +332,8 @@ struct KeyboardView: View {
                             
                     } else if KeyboardNumber == 4 {
                         
+                    } else if KeyboardNumber == 5 {
+                        
                     }
                 }
                 .background(Color(uiColor: .systemBackground))
@@ -336,7 +342,7 @@ struct KeyboardView: View {
             
             HStack{
                 Group {
-                    if KeyboardNumber != 4 {
+                    if KeyboardNumber != 4 && KeyboardNumber != 5 {
                         
                         Button {
                             shiftSwitch = 1
@@ -386,20 +392,16 @@ struct KeyboardView: View {
                         } label: {
                             keyDisplay(keyString: "m")
                         }
+                        // Delete Text
                         Button {
-                            shiftSwitch = 2
+                            deleteTextAction()
                         } label: {
-                            if shiftSwitch == 2 {
-                                Image(systemName: "capslock")
-                                    .frame(width: 44, height: 40)
-                                    .foregroundColor(Color.white)
-                                    .background(Color.gray)
-                            } else {
-                                Image(systemName: "capslock")
-                                    .frame(width: 44, height: 40)
-                            }
+                            Image(systemName: "delete.left")
+                                .frame(width: 44, height: 40)
                         }
                     } else if KeyboardNumber == 4 {
+                        
+                    } else if KeyboardNumber == 5 {
                         
                     }
                 }
@@ -413,7 +415,7 @@ struct KeyboardView: View {
                     
                     NextKeyboardButton(systemName: "globe",
                                        action: nextKeyboardAction)
-                    .frame(width: 44, height: 40)
+                    .frame(width: 30, height: 30)
                 }
                 
                 Button(){
@@ -422,13 +424,13 @@ struct KeyboardView: View {
                 } label: {
                     if KeyboardNumber == 0 {
                         Image(systemName: "character")
-                            .frame(width: 35, height: 30)
+                            .frame(width: 30, height: 30)
                             .foregroundColor(Color.white)
                             .background(Color.gray)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     } else {
                         Image(systemName: "character")
-                            .frame(width: 35, height: 30)
+                            .frame(width: 30, height: 30)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
                 }
@@ -439,13 +441,13 @@ struct KeyboardView: View {
                 } label: {
                     if KeyboardNumber == 1 {
                         Image(systemName: "textformat.subscript")
-                            .frame(width: 35, height: 30)
+                            .frame(width: 30, height: 30)
                             .foregroundColor(Color.white)
                             .background(Color.gray)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     } else {
                         Image(systemName: "textformat.subscript")
-                            .frame(width: 35, height: 30)
+                            .frame(width: 30, height: 30)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
                 }
@@ -456,13 +458,13 @@ struct KeyboardView: View {
                 } label: {
                     if KeyboardNumber == 2 {
                         Image(systemName: "textformat.superscript")
-                            .frame(width: 35, height: 30)
+                            .frame(width: 30, height: 30)
                             .foregroundColor(Color.white)
                             .background(Color.gray)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     } else {
                         Image(systemName: "textformat.superscript")
-                            .frame(width: 35, height: 30)
+                            .frame(width: 30, height: 30)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
                 }
@@ -474,42 +476,77 @@ struct KeyboardView: View {
                 } label: {
                     if KeyboardNumber == 3 {
                         Image(systemName: "function")
-                            .frame(width: 35, height: 30)
+                            .frame(width: 30, height: 30)
                             .foregroundColor(Color.white)
                             .background(Color.gray)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     } else {
                         Image(systemName: "function")
-                            .frame(width: 35, height: 30)
+                            .frame(width: 30, height: 30)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
                 }
-
+                
                 Button(){
                     KeyboardNumber = 4
                     buttonAction()
                 } label: {
                     if KeyboardNumber == 4 {
+                        Image(systemName: "x.squareroot")
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color.white)
+                            .background(Color.gray)
+                            .clipShape(RoundedRectangle(cornerRadius: 4))
+                    } else {
+                        Image(systemName: "x.squareroot")
+                            .frame(width: 30, height: 30)
+                            .clipShape(RoundedRectangle(cornerRadius: 4))
+                    }
+                }
+
+                Button(){
+                    KeyboardNumber = 5
+                    buttonAction()
+                } label: {
+                    if KeyboardNumber == 5 {
                         Image(systemName: "testtube.2")
-                            .frame(width: 35, height: 30)
+                            .frame(width: 30, height: 30)
                             .foregroundColor(Color.white)
                             .background(Color.gray)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     } else {
                         Image(systemName: "testtube.2")
-                            .frame(width: 35, height: 30)
+                            .frame(width: 30, height: 30)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
                 }
+                
+                Button(){
+                    moveLeftAction()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .frame(width: 20, height: 30)
+                }
+                
+                Button(){
+                    moveRightAction()
+                } label: {
+                    Image(systemName: "chevron.forward")
+                        .frame(width: 20, height: 30)
+                }
+                
+                Button(){
+                    inputTextAction("\n")
+                } label: {
+                    Image(systemName: "return.left")
+                        .frame(width: 35, height: 30)
+                        .foregroundColor(Color.white)
+                        .background(Color.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                }
 
                 
-                // Delete Text
-                Button {
-                    deleteTextAction()
-                } label: {
-                    Image(systemName: "delete.left")
-                        .frame(width: 44, height: 40)
-                }
+                
             }
         }
         .foregroundColor(Color(uiColor: .label))
@@ -765,11 +802,12 @@ struct KeyboardView: View {
             keyZ = "ᶻ"
         }
     }
+        
 }
 
 struct KeyboardView_Previews: PreviewProvider {
     static var previews: some View {
-        KeyboardView(needsInputModeSwitchKey: true, nextKeyboardAction: Selector(("dummy"))) { _ in } deleteTextAction: {}
+        KeyboardView(needsInputModeSwitchKey: true, nextKeyboardAction: Selector(("dummy"))) { _ in } deleteTextAction: {} moveRightAction: {} moveLeftAction: {}
     }
     
 }

@@ -14,6 +14,8 @@ import UIKit
 import SwiftUI
 
 class KeyboardViewController: UIInputViewController {
+    @State static var count = 0
+    
         
     override func viewDidLoad() {
         setup()
@@ -32,9 +34,35 @@ class KeyboardViewController: UIInputViewController {
         }, deleteTextAction: { [weak self] in
             guard let self,
                   self.textDocumentProxy.hasText else { return }
-            
+            print ("delete")
             self.textDocumentProxy.deleteBackward()
+        }, moveRightAction: { [weak self] in
+            guard let self = self else { return }
+
+            if let after = self.textDocumentProxy.documentContextAfterInput {
+                if after.isEmpty {
+                    // カーソルが文書の末尾にある場合
+                    self.textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+                } else {
+                    let offset = after.prefix(1).utf16.count
+                    self.textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
+                }
+            } else {
+                // カーソルが文書の末尾にある場合
+                self.textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+            }
+        }, moveLeftAction: { [weak self] in
+            guard let self = self else { return }
+
+            if let before = self.textDocumentProxy.documentContextBeforeInput {
+                let offset = before.prefix(1).utf16.count * -1
+                self.textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
+            } else {
+                // カーソルが文書の先頭にある場合
+                self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
+            }
         })
+
         
         
         // keyboardViewのSuperViewのSuperView(UIHostingController)の背景を透明にする
