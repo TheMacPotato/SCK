@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE8ECF0C2A72512F003060D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE8ECF0B2A72512F003060D8 /* Assets.xcassets */; };
 		CE9202072A57A9C500A6F44D /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9202062A57A9C500A6F44D /* KeyboardViewController.swift */; };
 		CE92020B2A57A9C500A6F44D /* SCK.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CE9202042A57A9C500A6F44D /* SCK.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CE9202102A57AF4A00A6F44D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92020F2A57AF4A00A6F44D /* KeyboardView.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CE8ECF0B2A72512F003060D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ScienceCustomKeyboard/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		CE9202042A57A9C500A6F44D /* SCK.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SCK.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9202062A57A9C500A6F44D /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		CE9202082A57A9C500A6F44D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				CED20B7D2A57C05600447667 /* View+BackgroundColor.swift */,
 				CE9202132A57B6A100A6F44D /* NextKeyboardButton.swift */,
 				CE92020F2A57AF4A00A6F44D /* KeyboardView.swift */,
+				CE8ECF0B2A72512F003060D8 /* Assets.xcassets */,
 				CE9202082A57A9C500A6F44D /* Info.plist */,
 			);
 			path = SCK;
@@ -206,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8ECF0C2A72512F003060D8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

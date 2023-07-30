@@ -34,7 +34,6 @@ class KeyboardViewController: UIInputViewController {
         }, deleteTextAction: { [weak self] in
             guard let self,
                   self.textDocumentProxy.hasText else { return }
-            print ("delete")
             self.textDocumentProxy.deleteBackward()
         }, moveRightAction: { [weak self] in
             guard let self = self else { return }

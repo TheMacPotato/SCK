@@ -226,12 +226,12 @@ struct KeyboardView: View {
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyQ))
                         } label: {
-                            keyLineDisplay(keyString: "q")
+                            keyDisplay(keyString: "q")
                         }
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyW))
                         } label: {
-                            keyLineDisplay(keyString: "w")
+                            keyDisplay(keyString: "w")
                         }
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyE))
@@ -251,7 +251,7 @@ struct KeyboardView: View {
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyY))
                         } label: {
-                            keyLineDisplay(keyString: "y")
+                            keyDisplay(keyString: "y")
                         }
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyU))
@@ -297,17 +297,17 @@ struct KeyboardView: View {
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyD))
                         } label: {
-                            keyLineDisplay(keyString: "d")
+                            keyDisplay(keyString: "d")
                         }
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyF))
                         } label: {
-                            keyLineDisplay(keyString: "f")
+                            keyDisplay(keyString: "f")
                         }
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyG))
                         } label: {
-                            keyLineDisplay(keyString: "g")
+                            keyDisplay(keyString: "g")
                         }
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyH))
@@ -345,7 +345,11 @@ struct KeyboardView: View {
                     if KeyboardNumber != 4 && KeyboardNumber != 5 {
                         
                         Button {
-                            shiftSwitch = 1
+                            if shiftSwitch == 1 {
+                                shiftSwitch = 0
+                            } else {
+                                shiftSwitch = 1
+                            }
                         } label: {
                             if shiftSwitch == 1 {
                                 Image(systemName: "shift")
@@ -360,7 +364,7 @@ struct KeyboardView: View {
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyZ))
                         } label: {
-                            keyLineDisplay(keyString: "z")
+                            keyDisplay(keyString: "z")
                         }
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyX))
@@ -370,7 +374,7 @@ struct KeyboardView: View {
                         Button {
                             inputTextAction(keyC)
                         } label: {
-                            keyLineDisplay(keyString: "c")
+                            keyDisplay(keyString: "c")
                         }
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyV))
@@ -380,7 +384,7 @@ struct KeyboardView: View {
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyB))
                         } label: {
-                            keyLineDisplay(keyString: "b")
+                            keyDisplay(keyString: "b")
                         }
                         Button {
                             inputTextAction(inputTextChange(alphabet: keyN))
@@ -475,13 +479,13 @@ struct KeyboardView: View {
                     buttonAction()
                 } label: {
                     if KeyboardNumber == 3 {
-                        Image(systemName: "function")
+                        Text("θ")
                             .frame(width: 30, height: 30)
                             .foregroundColor(Color.white)
                             .background(Color.gray)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     } else {
-                        Image(systemName: "function")
+                        Text("θ")
                             .frame(width: 30, height: 30)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
@@ -492,13 +496,13 @@ struct KeyboardView: View {
                     buttonAction()
                 } label: {
                     if KeyboardNumber == 4 {
-                        Image(systemName: "x.squareroot")
+                        Text("∫")
                             .frame(width: 30, height: 30)
                             .foregroundColor(Color.white)
                             .background(Color.gray)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     } else {
-                        Image(systemName: "x.squareroot")
+                        Text("∫")
                             .frame(width: 30, height: 30)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
@@ -525,14 +529,18 @@ struct KeyboardView: View {
                     moveLeftAction()
                 } label: {
                     Image(systemName: "chevron.backward")
-                        .frame(width: 20, height: 30)
+                        .frame(width: 25, height: 30)
+                        .background(Color(uiColor: .systemBackground))
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
                 
                 Button(){
                     moveRightAction()
                 } label: {
                     Image(systemName: "chevron.forward")
-                        .frame(width: 20, height: 30)
+                        .frame(width: 25, height: 30)
+                        .background(Color(uiColor: .systemBackground))
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
                 
                 Button(){
@@ -553,37 +561,480 @@ struct KeyboardView: View {
         .frame(height: 300)
     }
     
-    func keyLineDisplay(keyString : String) -> some View {
-        if KeyboardNumber == 1 {
-            return Text(keyString)
-                .strikethrough()
-                .frame(width: 30, height: 40)
-        } else if KeyboardNumber == 3 {
-            return Text(alphabetToGreek(alphabet:keyString))
-                .frame(width: 30, height: 40)
-        } else {
-            return Text(keyString)
-                .frame(width: 30, height: 40)
-        }
-    }
-    
     func keyDisplay(keyString : String) -> some View {
-        if KeyboardNumber == 3 {
-            return Text(alphabetToGreek(alphabet:keyString))
-                .frame(width: 30, height: 40)
-        } else {
-            return Text(keyString)
-                .frame(width: 30, height: 40)
+        switch KeyboardNumber {
+        case 0:
+            if shiftSwitch == 0 {
+                return Text(defaultKeys[keyString]!)
+                    .frame(width: 30, height: 40)
+            } else {
+                return Text(defaultShiftKeys[keyString]!)
+                    .frame(width: 30, height: 40)
+            }
+        case 1:
+            if shiftSwitch == 0 {
+                if subScriptKeys[keyString] == nil {
+                    return Text(defaultKeys[keyString]!)
+                        .strikethrough()
+                        .frame(width: 30, height: 40)
+                } else {
+                    return Text(defaultKeys[keyString]!)
+                        .frame(width: 30, height: 40)
+                }
+            } else {
+                if subScriptShiftKeys[keyString] == nil {
+                    return Text(defaultShiftKeys[keyString]!)
+                        .strikethrough()
+                        .frame(width: 30, height: 40)
+                } else {
+                    return Text(defaultShiftKeys[keyString]!)
+                        .frame(width: 30, height: 40)
+                }
+            }
+        case 2:
+            if shiftSwitch == 0 {
+                if superScriptKeys[keyString] == nil {
+                    return Text(defaultKeys[keyString]!)
+                        .strikethrough()
+                        .frame(width: 30, height: 40)
+                } else {
+                    return Text(defaultKeys[keyString]!)
+                        .frame(width: 30, height: 40)
+                }
+            } else {
+                if superScriptShiftKeys[keyString] == nil {
+                    return Text(defaultShiftKeys[keyString]!)
+                        .strikethrough()
+                        .frame(width: 30, height: 40)
+                } else {
+                    return Text(defaultShiftKeys[keyString]!)
+                        .frame(width: 30, height: 40)
+                }
+            }
+        case 3:
+            if shiftSwitch == 0 {
+                if greekKeys[keyString] == nil {
+                    return Text(greekKeys[keyString]!)
+                        .strikethrough()
+                        .frame(width: 30, height: 40)
+                } else {
+                    return Text(greekKeys[keyString]!)
+                        .frame(width: 30, height: 40)
+                }
+            } else {
+                if greekShiftKeys[keyString] == nil {
+                    return Text(greekShiftKeys[keyString]!)
+                        .strikethrough()
+                        .frame(width: 30, height: 40)
+                } else {
+                    return Text(greekShiftKeys[keyString]!)
+                        .frame(width: 30, height: 40)
+                }
+            }
+        case 4:
+            if shiftSwitch == 0 {
+                return Text(defaultKeys[keyString]!)
+                    .frame(width: 30, height: 40)
+            }
+            else {
+                return Text(defaultShiftKeys[keyString]!)
+                    .frame(width: 30, height: 40)
+            }
+        case 5:
+            if shiftSwitch == 0 {
+                return Text(defaultKeys[keyString]!)
+                    .frame(width: 30, height: 40)
+            }
+            else {
+                return Text(defaultShiftKeys[keyString]!)
+                    .frame(width: 30, height: 40)
+            }
+        default:
+            if shiftSwitch == 0 {
+                return Text(defaultKeys[keyString]!)
+                    .frame(width: 30, height: 40)
+            }
+            else {
+                return Text(defaultShiftKeys[keyString]!)
+                    .frame(width: 30, height: 40)
+            }
         }
     }
     
     func inputTextChange(alphabet : String) -> String {
-        if KeyboardNumber == 3 {
-            return alphabetToGreek(alphabet: alphabet)
+        if KeyboardNumber == 3 && shiftSwitch == 0{
+            return greekKeys[alphabet]!
+        } else if KeyboardNumber != 3 && KeyboardNumber != 4 && KeyboardNumber != 5 {
+            if shiftSwitch == 0 {
+                return alphabet
+            } else if shiftSwitch == 1 {
+                return alphabet
+            }
+            return "X"
         } else {
-            return alphabet
+            return "X"
         }
     }
+    
+    let defaultKeys: [String: String] = [
+        "0": "0",
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        
+        "+":"+",
+        "-":"-",
+        "=":"=",
+        "(":"(",
+        ")":")",
+        "{":"{",
+        "}":"}",
+        "[":"[",
+        "]":"]",
+        
+        "a": "a",
+        "b": "b",
+        "c": "c",
+        "d": "d",
+        "e": "e",
+        "f": "f",
+        "g": "g",
+        "h": "h",
+        "i": "i",
+        "j": "j",
+        "k": "k",
+        "l": "l",
+        "m": "m",
+        "n": "n",
+        "o": "o",
+        "p": "p",
+        "q": "q",
+        "r": "r",
+        "s": "s",
+        "t": "t",
+        "u": "u",
+        "v": "v",
+        "w": "w",
+        "x": "x",
+        "y": "y",
+        "z": "z"
+    ]
+    
+    let defaultShiftKeys: [String: String] = [
+        "0": "0",
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        
+        "+":"+",
+        "-":"-",
+        "=":"=",
+        "(":"(",
+        ")":")",
+        "{":"{",
+        "}":"}",
+        "[":"[",
+        "]":"]",
+        
+        "a": "A",
+        "b": "B",
+        "c": "C",
+        "d": "D",
+        "e": "E",
+        "f": "F",
+        "g": "G",
+        "h": "H",
+        "i": "I",
+        "j": "J",
+        "k": "K",
+        "l": "L",
+        "m": "M",
+        "n": "N",
+        "o": "O",
+        "p": "P",
+        "q": "Q",
+        "r": "R",
+        "s": "S",
+        "t": "T",
+        "u": "U",
+        "v": "V",
+        "w": "W",
+        "x": "X",
+        "y": "Y",
+        "z": "Z"
+    ]
+    
+    let subScriptKeys: [String: String] = [
+        "0": "₀",
+        "1": "₁",
+        "2": "₂",
+        "3": "₃",
+        "4": "₄",
+        "5": "₅",
+        "6": "₆",
+        "7": "₇",
+        "8": "₈",
+        "9": "₉",
+        
+        "+": "₊",
+        "-": "₋",
+        "=": "₌",
+        "(": "₍",
+        ")": "₎",
+        "{": "{",
+        "}": "}",
+        "[": "[",
+        "]": "]",
+        
+        "a": "ₐ",
+        "e": "ₑ",
+        "i": "ᵢ",
+        "k": "ₖ",
+        "l": "ₗ",
+        "m": "ₘ",
+        "n": "ₙ",
+        "o": "ₒ",
+        "r": "ᵣ",
+        "s": "ₛ",
+        "t": "ₜ",
+        "u": "ᵤ",
+        "v": "ᵥ",
+        "x": "ₓ",
+        "y": "ᵧ"
+    ]
+    
+    let subScriptShiftKeys : [String: String] = [
+        "0": "₀",
+        "1": "₁",
+        "2": "₂",
+        "3": "₃",
+        "4": "₄",
+        "5": "₅",
+        "6": "₆",
+        "7": "₇",
+        "8": "₈",
+        "9": "₉",
+        
+        "+": "₊",
+        "-": "₋",
+        "=": "₌",
+        "(": "₍",
+        ")": "₎",
+        "{": "{",
+        "}": "}",
+        "[": "[",
+        "]": "]"
+    ]
+
+    let superScriptKeys: [String: String] = [
+        "0": "⁰",
+        "1": "¹",
+        "2": "²",
+        "3": "³",
+        "4": "⁴",
+        "5": "⁵",
+        "6": "⁶",
+        "7": "⁷",
+        "8": "⁸",
+        "9": "⁹",
+        
+        "+": "⁺",
+        "-": "⁻",
+        "=": "⁼",
+        "(":"(",
+        ")":")",
+        "{":"{",
+        "}":"}",
+        "[":"[",
+        "]":"]",
+        
+        "a": "ᵃ",
+        "b": "ᵇ",
+        "c": "ᶜ",
+        "d": "ᵈ",
+        "e": "ᵉ",
+        "f": "ᶠ",
+        "g": "ᵍ",
+        "h": "ʰ",
+        "i": "ⁱ",
+        "j": "ʲ",
+        "k": "ᵏ",
+        "l": "ˡ",
+        "m": "ᵐ",
+        "n": "ⁿ",
+        "o": "ᵒ",
+        "p": "ᵖ",
+        "r": "ʳ",
+        "s": "ˢ",
+        "t": "ᵗ",
+        "u": "ᵘ",
+        "v": "ᵛ",
+        "w": "ʷ",
+        "x": "ˣ",
+        "y": "ʸ",
+        "z": "ᶻ"
+    ]
+
+    let superScriptShiftKeys: [String: String] = [
+        "0": "⁰",
+        "1": "¹",
+        "2": "²",
+        "3": "³",
+        "4": "⁴",
+        "5": "⁵",
+        "6": "⁶",
+        "7": "⁷",
+        "8": "⁸",
+        "9": "⁹",
+        
+        "+": "⁺",
+        "-": "⁻",
+        "=": "⁼",
+        "(":"(",
+        ")":")",
+        "{":"{",
+        "}":"}",
+        "[":"[",
+        "]":"]",
+        
+        "a": "ᴬ",
+        "b": "ᴮ",
+        "c": "ᶜ",
+        "d": "ᴰ",
+        "e": "ᴱ",
+        "g": "ᴳ",
+        "h": "ᴴ",
+        "i": "ᴵ",
+        "j": "ᴶ",
+        "k": "ᴷ",
+        "l": "ᴸ",
+        "m": "ᴹ",
+        "n": "ᴺ",
+        "o": "ᴼ",
+        "p": "ᴾ",
+        "r": "ᴿ",
+        "s": "ˢ",
+        "t": "ᵀ",
+        "u": "ᵁ",
+        "v": "ⱽ",
+        "w": "ᵂ",
+        "x": "ˣ",
+        "y": "ʸ",
+        "z": "ᶻ"
+    ]
+    
+    let greekKeys: [String: String] = [
+        "0": "Ⅹ",
+        "1": "Ⅰ",
+        "2": "Ⅱ",
+        "3": "Ⅲ",
+        "4": "Ⅳ",
+        "5": "Ⅴ",
+        "6": "Ⅵ",
+        "7": "Ⅶ",
+        "8": "Ⅷ",
+        "9": "Ⅸ",
+        
+        "+": "+",
+        "-": "-",
+        "=": "=",
+        "(":"(",
+        ")":")",
+        "{":"{",
+        "}":"}",
+        "[":"[",
+        "]":"]",
+        
+        "a": "α",
+        "b": "β",
+        "c": "γ",
+        "d": "δ",
+        "e": "ε",
+        "f": "φ",
+        "g": "γ",
+        "h": "η",
+        "i": "ι",
+        "j": "ϑ",
+        "k": "κ",
+        "l": "λ",
+        "m": "μ",
+        "n": "ν",
+        "o": "ο",
+        "p": "π",
+        "q": "θ",
+        "r": "ρ",
+        "s": "σ",
+        "t": "τ",
+        "u": "υ",
+        "v": "ϖ",
+        "w": "ω",
+        "x": "χ",
+        "y": "ψ",
+        "z": "ζ"
+    ]
+    
+    let greekShiftKeys: [String: String] = [
+        "0": "Ⅹ",
+        "1": "Ⅰ",
+        "2": "Ⅱ",
+        "3": "Ⅲ",
+        "4": "Ⅳ",
+        "5": "Ⅴ",
+        "6": "Ⅵ",
+        "7": "Ⅶ",
+        "8": "Ⅷ",
+        "9": "Ⅸ",
+        
+        "+":"+",
+        "-":"-",
+        "=":"=",
+        "(":"(",
+        ")":")",
+        "{":"{",
+        "}":"}",
+        "[":"[",
+        "]":"]",
+        
+        "a": "Α",
+        "b": "Β",
+        "c": "Γ",
+        "d": "Δ",
+        "e": "Ε",
+        "f": "Φ",
+        "g": "Γ",
+        "h": "Η",
+        "i": "Ι",
+        "j": "Θ",
+        "k": "Κ",
+        "l": "Λ",
+        "m": "Μ",
+        "n": "Ν",
+        "o": "Ο",
+        "p": "Π",
+        "q": "Θ",
+        "r": "Ρ",
+        "s": "Σ",
+        "t": "Τ",
+        "u": "Υ",
+        "v": "ϖ",
+        "w": "Ω",
+        "x": "Χ",
+        "y": "Ψ",
+        "z": "Ζ"
+    ]
+
     
     func alphabetToGreek(alphabet : String) -> String {
         switch alphabet {
