@@ -17,59 +17,10 @@ struct KeyboardView: View {
     let moveRightAction: () -> Void
     let moveLeftAction: () -> Void
     @State var KeyboardNumber: Int = 0
-    // 0 = default, 1 = subScript, 2 = superScript, 3 = greek, 4 = math, 5 = science
+    // 0 = default, 1 = subScript, 2 = superScript, 3 = greek, 4 = math
+    
     
     @State var shiftSwitch = 0
-    
-    @State var key0 = "0"
-    @State var key1 = "1"
-    @State var key2 = "2"
-    @State var key3 = "3"
-    @State var key4 = "4"
-    @State var key5 = "5"
-    @State var key6 = "6"
-    @State var key7 = "7"
-    @State var key8 = "8"
-    @State var key9 = "9"
-    
-    @State var keyA = "a"
-    @State var keyB = "b"
-    @State var keyC = "c"
-    @State var keyD = "d"
-    @State var keyE = "e"
-    @State var keyF = "f"
-    @State var keyG = "g"
-    @State var keyH = "h"
-    @State var keyI = "i"
-    @State var keyJ = "j"
-    @State var keyK = "k"
-    @State var keyL = "l"
-    @State var keyM = "m"
-    @State var keyN = "n"
-    @State var keyO = "o"
-    @State var keyP = "p"
-    @State var keyQ = "q"
-    @State var keyR = "r"
-    @State var keyS = "s"
-    @State var keyT = "t"
-    @State var keyU = "u"
-    @State var keyV = "v"
-    @State var keyW = "w"
-    @State var keyX = "x"
-    @State var keyY = "y"
-    @State var keyZ = "z"
-     
-    
-    @State var keyPlas = "+"
-    @State var keyMinus = "-"
-    @State var keyEqual = "="
-    @State var exclamation = "!"
-    @State var keyBracketsS = "("
-    @State var keyBracketsE = ")"
-    @State var keyBracketsMidS = "{"
-    @State var keyBracketsMidE = "}"
-    @State var keyBracketsBigS = "["
-    @State var keyBracketsBigE = "]"
     
     var body: some View {
         
@@ -80,71 +31,64 @@ struct KeyboardView: View {
                 Group {
                     
                     // Input Text
+                    Button {
+                        keyAction(key: "1")
+                    } label: {
+                        keyDisplay(keyString: "1")
+                    }
                     
-                    if KeyboardNumber != 4 && KeyboardNumber != 5{
-                        Button {
-                            inputTextAction(inputTextChange(alphabet: key1))
-                        } label: {
-                            keyDisplay(keyString: "1")
-                        }
-                        
-                        Button {
-                            inputTextAction(inputTextChange(alphabet: key2))
-                        } label: {
-                            keyDisplay(keyString: "2")
-                        }
-                        
-                        Button {
-                            inputTextAction(inputTextChange(alphabet: key3))
-                        } label: {
-                            keyDisplay(keyString: "3")
-                        }
-                        
-                        Button {
-                            inputTextAction(inputTextChange(alphabet: key4))
-                        } label: {
-                            keyDisplay(keyString: "4")
-                        }
-                        
-                        Button {
-                            inputTextAction(inputTextChange(alphabet: key5))
-                        } label: {
-                            keyDisplay(keyString: "5")
-                        }
-                        
-                        Button {
-                            inputTextAction(inputTextChange(alphabet: key6))
-                        } label: {
-                            keyDisplay(keyString: "6")
-                        }
-                        
-                        Button {
-                            inputTextAction(inputTextChange(alphabet: key7))
-                        } label: {
-                            keyDisplay(keyString: "7")
-                        }
-                        
-                        Button {
-                            inputTextAction(inputTextChange(alphabet: key8))
-                        } label: {
-                            keyDisplay(keyString: "8")
-                        }
-                        
-                        Button {
-                            inputTextAction(inputTextChange(alphabet: key9))
-                        } label: {
-                            keyDisplay(keyString: "9")
-                        }
-                        
-                        Button {
-                            inputTextAction(inputTextChange(alphabet: key0))
-                        } label: {
-                            keyDisplay(keyString: "0")
-                        }
-                    } else if KeyboardNumber == 4 {
-                        
-                    } else if KeyboardNumber == 5 {
-                        
+                    Button {
+                        keyAction(key: "2")
+                    } label: {
+                        keyDisplay(keyString: "2")
+                    }
+                    
+                    Button {
+                        keyAction(key: "3")
+                    } label: {
+                        keyDisplay(keyString: "3")
+                    }
+                    
+                    Button {
+                        keyAction(key: "4")
+                    } label: {
+                        keyDisplay(keyString: "4")
+                    }
+                    
+                    Button {
+                        keyAction(key: "5")
+                    } label: {
+                        keyDisplay(keyString: "5")
+                    }
+                    
+                    Button {
+                        keyAction(key: "6")
+                    } label: {
+                        keyDisplay(keyString: "6")
+                    }
+                    
+                    Button {
+                        keyAction(key: "7")
+                    } label: {
+                        keyDisplay(keyString: "7")
+                    }
+                    
+                    Button {
+                        keyAction(key: "8")
+                    } label: {
+                        keyDisplay(keyString: "8")
+                    }
+                    
+                    Button {
+                        keyAction(key: "9")
+                    } label: {
+                        keyDisplay(keyString: "9")
+                    }
+                    
+                    Button {
+                        keyAction(key: "0")
+                    } label: {
+                        keyDisplay(keyString: "0")
                     }
                 }
                 .background(Color(uiColor: .systemBackground))
@@ -154,66 +98,82 @@ struct KeyboardView: View {
             HStack{
                 Group {
                     Button {
-                        inputTextAction(keyPlas)
+                        keyAction(key: "+")
                     } label: {
-                        Text("+")
+                        keyDisplay(keyString: "+")
+                    }
+                    
+                    Button {
+                        keyAction(key: "-")
+                    } label: {
+                        keyDisplay(keyString: "-")
+                    }
+                    
+                    Button {
+                        keyAction(key: "×")
+                    } label: {
+                        keyDisplay(keyString: "×")
+                    }
+                    
+                    Button {
+                        keyAction(key: "÷")
+                    } label: {
+                        keyDisplay(keyString: "÷")
+                    }
+                    
+                    Button {
+                        keyAction(key: "=")
+                    } label: {
+                        keyDisplay(keyString:"=")
+                    }
+                    
+                    if KeyboardNumber == 4 {
+                        Button {
+                            inputTextAction("≡")
+                        } label: {
+                            Text("≡")
+                                .frame(width: 30, height: 40)
+                        }
+                    }
+                    
+                    Button {
+                        keyAction(key: "()")
+                        moveLeftAction()
+                    } label: {
+                        Text("( )")
                             .frame(width: 30, height: 40)
                     }
                     
                     Button {
-                        inputTextAction(keyMinus)
+                        keyAction(key: "{}")
+                        moveLeftAction()
                     } label: {
-                        Text("-")
+                        Text("{ }")
                             .frame(width: 30, height: 40)
                     }
                     
                     Button {
-                        inputTextAction(keyEqual)
+                        keyAction(key: "[]")
+                        moveLeftAction()
                     } label: {
-                        Text("=")
+                        Text("[ ]")
                             .frame(width: 30, height: 40)
                     }
                     
-                    Button {
-                        inputTextAction(keyBracketsS)
-                    } label: {
-                        Text("(")
-                            .frame(width: 30, height: 40)
-                    }
-                    
-                    Button {
-                        inputTextAction(keyBracketsE)
-                    } label: {
-                        Text(")")
-                            .frame(width: 30, height: 40)
-                    }
-                    
-                    Button {
-                        inputTextAction(keyBracketsMidS)
-                    } label: {
-                        Text("{")
-                            .frame(width: 30, height: 40)
-                    }
-                    
-                    Button {
-                        inputTextAction(keyBracketsMidE)
-                    } label: {
-                        Text("}")
-                            .frame(width: 30, height: 40)
-                    }
-                    
-                    Button {
-                        inputTextAction(keyBracketsBigS)
-                    } label: {
-                        Text("[")
-                            .frame(width: 30, height: 40)
-                    }
-                    
-                    Button {
-                        inputTextAction(keyBracketsBigE)
-                    } label: {
-                        Text("]")
-                            .frame(width: 30, height: 40)
+                    if shiftSwitch == 0{
+                        Button {
+                            inputTextAction("/")
+                        } label: {
+                            Text("/")
+                                .frame(width: 30, height: 40)
+                        }
+                    } else if shiftSwitch == 1 {
+                        Button {
+                            inputTextAction("\\")
+                        } label: {
+                            Text("\\")
+                                .frame(width: 30, height: 40)
+                        }
                     }
                 }
                 .background(Color(uiColor: .systemBackground))
@@ -222,59 +182,119 @@ struct KeyboardView: View {
             
             HStack{
                 Group {
-                    if KeyboardNumber != 4 && KeyboardNumber != 5{
+                    if KeyboardNumber != 4 {
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyQ))
+                            keyAction(key: "q")
                         } label: {
                             keyDisplay(keyString: "q")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyW))
+                            keyAction(key: "w")
                         } label: {
                             keyDisplay(keyString: "w")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyE))
+                            keyAction(key: "e")
                         } label: {
                             keyDisplay(keyString: "e")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyR))
+                            keyAction(key: "r")
                         } label: {
                             keyDisplay(keyString: "r")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyT))
+                            keyAction(key: "t")
                         } label: {
                             keyDisplay(keyString: "t")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyY))
+                            keyAction(key: "y")
                         } label: {
                             keyDisplay(keyString: "y")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyU))
+                            keyAction(key: "u")
                         } label: {
                             keyDisplay(keyString: "u")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyI))
+                            keyAction(key: "i")
                         } label: {
                             keyDisplay(keyString: "i")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyO))
+                            keyAction(key: "o")
                         } label: {
                             keyDisplay(keyString: "o")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyP))
+                            keyAction(key: "p")
                         } label: {
                             keyDisplay(keyString: "p")
                         }
                     } else if KeyboardNumber == 4 {
+                        Button {
+                            inputTextAction("±")
+                        } label: {
+                            Text("±")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∓")
+                        } label: {
+                            Text("∓")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("≠")
+                        } label: {
+                            Text("≠")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("≈")
+                        } label: {
+                            Text("≈")
+                                .frame(width: 30, height: 40)
+                        }
                         
+                        Button {
+                            inputTextAction("≤")
+                        } label: {
+                            Text("≤")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("≥")
+                        } label: {
+                            Text("≥")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("<")
+                        } label: {
+                            Text("<")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction(">")
+                        } label: {
+                            Text(">")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("≪")
+                        } label: {
+                            Text("≪")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("≫")
+                        } label: {
+                            Text("≫")
+                                .frame(width: 30, height: 40)
+                        }
                     }
                 }
                 .background(Color(uiColor: .systemBackground))
@@ -283,57 +303,114 @@ struct KeyboardView: View {
             
             HStack{
                 Group {
-                    if KeyboardNumber != 4 && KeyboardNumber != 5 {
+                    if KeyboardNumber != 4 {
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyA))
+                            keyAction(key: "a")
                         } label: {
                             keyDisplay(keyString: "a")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyS))
+                            keyAction(key: "s")
                         } label: {
                             keyDisplay(keyString: "s")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyD))
+                            keyAction(key: "d")
                         } label: {
                             keyDisplay(keyString: "d")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyF))
+                            keyAction(key: "f")
                         } label: {
                             keyDisplay(keyString: "f")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyG))
+                            keyAction(key: "g")
                         } label: {
                             keyDisplay(keyString: "g")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyH))
+                            keyAction(key: "h")
                         } label: {
                             keyDisplay(keyString: "h")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyJ))
+                            keyAction(key: "j")
                         } label: {
                             keyDisplay(keyString: "j")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyK))
+                            keyAction(key: "k")
                         } label: {
                             keyDisplay(keyString: "k")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyL))
+                            keyAction(key: "l")
                         } label: {
                             keyDisplay(keyString: "l")
                         }
                             
                     } else if KeyboardNumber == 4 {
-                        
-                    } else if KeyboardNumber == 5 {
-                        
+                        Button {
+                            inputTextAction("∅")
+                        } label: {
+                            Text("∅")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∞")
+                        } label: {
+                            Text("∞")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∫")
+                        } label: {
+                            Text("∫")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∂")
+                        } label: {
+                            Text("∂")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("√")
+                        } label: {
+                            Text("√")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∑")
+                        } label: {
+                            Text("∑")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∏")
+                        } label: {
+                            Text("∏")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∐")
+                        } label: {
+                            Text("∐")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∆")
+                        } label: {
+                            Text("∆")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∇")
+                        } label: {
+                            Text("∇")
+                                .frame(width: 30, height: 40)
+                        }
                     }
                 }
                 .background(Color(uiColor: .systemBackground))
@@ -342,71 +419,104 @@ struct KeyboardView: View {
             
             HStack{
                 Group {
-                    if KeyboardNumber != 4 && KeyboardNumber != 5 {
-                        
-                        Button {
-                            if shiftSwitch == 1 {
-                                shiftSwitch = 0
-                            } else {
-                                shiftSwitch = 1
-                            }
-                        } label: {
-                            if shiftSwitch == 1 {
-                                Image(systemName: "shift")
-                                    .frame(width: 44, height: 40)
-                                    .foregroundColor(Color.white)
-                                    .background(Color.gray)
-                            } else {
-                                Image(systemName: "shift")
-                                    .frame(width: 44, height: 40)
-                            }
+                    Button {
+                        if shiftSwitch == 1 {
+                            shiftSwitch = 0
+                        } else {
+                            shiftSwitch = 1
                         }
+                    } label: {
+                        if shiftSwitch == 1 {
+                            Image(systemName: "shift")
+                                .frame(width: 44, height: 40)
+                                .foregroundColor(Color.white)
+                                .background(Color.gray)
+                        } else {
+                            Image(systemName: "shift")
+                                .frame(width: 44, height: 40)
+                        }
+                    }
+                    if KeyboardNumber != 4 {
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyZ))
+                            keyAction(key: "z")
                         } label: {
                             keyDisplay(keyString: "z")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyX))
+                            keyAction(key: "x")
                         } label: {
                             keyDisplay(keyString: "x")
                         }
                         Button {
-                            inputTextAction(keyC)
+                            keyAction(key: "c")
                         } label: {
                             keyDisplay(keyString: "c")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyV))
+                            keyAction(key: "v")
                         } label: {
                             keyDisplay(keyString: "v")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyB))
+                            keyAction(key: "b")
                         } label: {
                             keyDisplay(keyString: "b")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyN))
+                            keyAction(key: "n")
                         } label: {
                             keyDisplay(keyString: "n")
                         }
                         Button {
-                            inputTextAction(inputTextChange(alphabet: keyM))
+                            keyAction(key: "m")
                         } label: {
                             keyDisplay(keyString: "m")
                         }
-                        // Delete Text
-                        Button {
-                            deleteTextAction()
-                        } label: {
-                            Image(systemName: "delete.left")
-                                .frame(width: 44, height: 40)
-                        }
                     } else if KeyboardNumber == 4 {
-                        
-                    } else if KeyboardNumber == 5 {
-                        
+                        Button {
+                            inputTextAction("∴")
+                        } label: {
+                            Text("∴")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∵")
+                        } label: {
+                            Text("∵")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∧")
+                        } label: {
+                            Text("∧")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("∨")
+                        } label: {
+                            Text("∨")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("||")
+                            moveLeftAction()
+                        } label: {
+                            Text("|x|")
+                                .frame(width: 30, height: 40)
+                        }
+                        Button {
+                            inputTextAction("→")
+                        } label: {
+                            Text("→")
+                                .frame(width: 30, height: 40)
+                        }
+                    }
+                    // Delete Text
+                    Button {
+                        deleteTextAction()
+                    } label: {
+                        Image(systemName: "delete.left")
+                            .frame(width: 44, height: 40)
                     }
                 }
                 .background(Color(uiColor: .systemBackground))
@@ -419,12 +529,11 @@ struct KeyboardView: View {
                     
                     NextKeyboardButton(systemName: "globe",
                                        action: nextKeyboardAction)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 25, height: 30)
                 }
                 
                 Button(){
                     KeyboardNumber = 0
-                    buttonAction()
                 } label: {
                     if KeyboardNumber == 0 {
                         Image(systemName: "character")
@@ -441,7 +550,6 @@ struct KeyboardView: View {
                 
                 Button(){
                     KeyboardNumber = 1
-                    buttonAction()
                 } label: {
                     if KeyboardNumber == 1 {
                         Image(systemName: "textformat.subscript")
@@ -458,7 +566,6 @@ struct KeyboardView: View {
                 
                 Button(){
                     KeyboardNumber = 2
-                    buttonAction()
                 } label: {
                     if KeyboardNumber == 2 {
                         Image(systemName: "textformat.superscript")
@@ -476,7 +583,6 @@ struct KeyboardView: View {
                 
                 Button(){
                     KeyboardNumber = 3
-                    buttonAction()
                 } label: {
                     if KeyboardNumber == 3 {
                         Text("θ")
@@ -493,7 +599,6 @@ struct KeyboardView: View {
                 
                 Button(){
                     KeyboardNumber = 4
-                    buttonAction()
                 } label: {
                     if KeyboardNumber == 4 {
                         Text("∫")
@@ -507,29 +612,21 @@ struct KeyboardView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
                 }
-
-                Button(){
-                    KeyboardNumber = 5
-                    buttonAction()
-                } label: {
-                    if KeyboardNumber == 5 {
-                        Image(systemName: "testtube.2")
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(Color.white)
-                            .background(Color.gray)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    } else {
-                        Image(systemName: "testtube.2")
-                            .frame(width: 30, height: 30)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    }
-                }
                 
                 Button(){
                     moveLeftAction()
                 } label: {
                     Image(systemName: "chevron.backward")
-                        .frame(width: 25, height: 30)
+                        .frame(width: 30, height: 30)
+                        .background(Color(uiColor: .systemBackground))
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                }
+                
+                Button {
+                    inputTextAction(" ")
+                } label: {
+                    Image(systemName: "space")
+                        .frame(width: 30, height: 30)
                         .background(Color(uiColor: .systemBackground))
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
@@ -538,7 +635,7 @@ struct KeyboardView: View {
                     moveRightAction()
                 } label: {
                     Image(systemName: "chevron.forward")
-                        .frame(width: 25, height: 30)
+                        .frame(width: 30, height: 30)
                         .background(Color(uiColor: .systemBackground))
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
@@ -575,7 +672,7 @@ struct KeyboardView: View {
             if shiftSwitch == 0 {
                 if subScriptKeys[keyString] == nil {
                     return Text(defaultKeys[keyString]!)
-                        .strikethrough()
+                        .strikethrough(color: Color.red)
                         .frame(width: 30, height: 40)
                 } else {
                     return Text(defaultKeys[keyString]!)
@@ -584,7 +681,7 @@ struct KeyboardView: View {
             } else {
                 if subScriptShiftKeys[keyString] == nil {
                     return Text(defaultShiftKeys[keyString]!)
-                        .strikethrough()
+                        .strikethrough(color: Color.red)
                         .frame(width: 30, height: 40)
                 } else {
                     return Text(defaultShiftKeys[keyString]!)
@@ -595,7 +692,7 @@ struct KeyboardView: View {
             if shiftSwitch == 0 {
                 if superScriptKeys[keyString] == nil {
                     return Text(defaultKeys[keyString]!)
-                        .strikethrough()
+                        .strikethrough(color: Color.red)
                         .frame(width: 30, height: 40)
                 } else {
                     return Text(defaultKeys[keyString]!)
@@ -604,7 +701,7 @@ struct KeyboardView: View {
             } else {
                 if superScriptShiftKeys[keyString] == nil {
                     return Text(defaultShiftKeys[keyString]!)
-                        .strikethrough()
+                        .strikethrough(color: Color.red)
                         .frame(width: 30, height: 40)
                 } else {
                     return Text(defaultShiftKeys[keyString]!)
@@ -615,7 +712,7 @@ struct KeyboardView: View {
             if shiftSwitch == 0 {
                 if greekKeys[keyString] == nil {
                     return Text(greekKeys[keyString]!)
-                        .strikethrough()
+                        .strikethrough(color: Color.red)
                         .frame(width: 30, height: 40)
                 } else {
                     return Text(greekKeys[keyString]!)
@@ -624,7 +721,7 @@ struct KeyboardView: View {
             } else {
                 if greekShiftKeys[keyString] == nil {
                     return Text(greekShiftKeys[keyString]!)
-                        .strikethrough()
+                        .strikethrough(color: Color.red)
                         .frame(width: 30, height: 40)
                 } else {
                     return Text(greekShiftKeys[keyString]!)
@@ -676,6 +773,50 @@ struct KeyboardView: View {
         }
     }
     
+    func keyAction(key : String){
+        switch KeyboardNumber {
+        case 0:
+            if shiftSwitch == 0 && defaultKeys [key] != nil {
+                inputTextAction(defaultKeys [key]!)
+            } else if defaultShiftKeys [key] != nil {
+                inputTextAction(defaultShiftKeys [key]!)
+            }
+        case 1:
+            if shiftSwitch == 0 && subScriptKeys [key] != nil {
+                inputTextAction(subScriptKeys [key]!)
+            } else if subScriptShiftKeys [key] != nil {
+                inputTextAction(subScriptShiftKeys [key]!)
+            }
+        case 2:
+            if shiftSwitch == 0 && superScriptKeys [key] != nil {
+                inputTextAction(superScriptKeys [key]!)
+            } else if superScriptShiftKeys [key] != nil {
+                inputTextAction(superScriptShiftKeys [key]!)
+            }
+        case 3:
+            if shiftSwitch == 0 && greekKeys [key] != nil {
+                inputTextAction(greekKeys [key]!)
+            } else if greekKeys [key] != nil {
+                inputTextAction(greekShiftKeys [key]!)
+            }
+        case 4:
+            if shiftSwitch == 0 {
+                inputTextAction(defaultKeys [key]!)
+            } else {
+                inputTextAction(defaultShiftKeys [key]!)
+            }
+        case 5:
+            if shiftSwitch == 0 {
+                inputTextAction(defaultKeys [key]!)
+            } else {
+                inputTextAction(defaultShiftKeys [key]!)
+            }
+        default:
+            inputTextAction("X")
+        }
+    }
+    
+    
     let defaultKeys: [String: String] = [
         "0": "0",
         "1": "1",
@@ -688,15 +829,14 @@ struct KeyboardView: View {
         "8": "8",
         "9": "9",
         
-        "+":"+",
-        "-":"-",
-        "=":"=",
-        "(":"(",
-        ")":")",
-        "{":"{",
-        "}":"}",
-        "[":"[",
-        "]":"]",
+        "+": "+",
+        "-": "-",
+        "×": "×",
+        "÷": "÷",
+        "=": "=",
+        "()": "()",
+        "{}": "{}",
+        "[]": "[]",
         
         "a": "a",
         "b": "b",
@@ -738,15 +878,14 @@ struct KeyboardView: View {
         "8": "8",
         "9": "9",
         
-        "+":"+",
-        "-":"-",
-        "=":"=",
-        "(":"(",
-        ")":")",
-        "{":"{",
-        "}":"}",
-        "[":"[",
-        "]":"]",
+        "+": "+",
+        "-": "-",
+        "×": "×",
+        "÷": "÷",
+        "=": "=",
+        "()": "()",
+        "{}": "{}",
+        "[]": "[]",
         
         "a": "A",
         "b": "B",
@@ -791,28 +930,25 @@ struct KeyboardView: View {
         "+": "₊",
         "-": "₋",
         "=": "₌",
-        "(": "₍",
-        ")": "₎",
-        "{": "{",
-        "}": "}",
-        "[": "[",
-        "]": "]",
+        "()":"₍₎",
         
         "a": "ₐ",
         "e": "ₑ",
+        "h": "ₕ",
         "i": "ᵢ",
+        "j": "ⱼ",
         "k": "ₖ",
         "l": "ₗ",
         "m": "ₘ",
         "n": "ₙ",
         "o": "ₒ",
+        "p": "ₚ",
         "r": "ᵣ",
         "s": "ₛ",
         "t": "ₜ",
         "u": "ᵤ",
         "v": "ᵥ",
-        "x": "ₓ",
-        "y": "ᵧ"
+        "x": "ₓ"
     ]
     
     let subScriptShiftKeys : [String: String] = [
@@ -830,12 +966,7 @@ struct KeyboardView: View {
         "+": "₊",
         "-": "₋",
         "=": "₌",
-        "(": "₍",
-        ")": "₎",
-        "{": "{",
-        "}": "}",
-        "[": "[",
-        "]": "]"
+        "()":"₍₎",
     ]
 
     let superScriptKeys: [String: String] = [
@@ -853,12 +984,7 @@ struct KeyboardView: View {
         "+": "⁺",
         "-": "⁻",
         "=": "⁼",
-        "(":"(",
-        ")":")",
-        "{":"{",
-        "}":"}",
-        "[":"[",
-        "]":"]",
+        "()":"⁽⁾",
         
         "a": "ᵃ",
         "b": "ᵇ",
@@ -902,12 +1028,7 @@ struct KeyboardView: View {
         "+": "⁺",
         "-": "⁻",
         "=": "⁼",
-        "(":"(",
-        ")":")",
-        "{":"{",
-        "}":"}",
-        "[":"[",
-        "]":"]",
+        "()":"⁽⁾",
         
         "a": "ᴬ",
         "b": "ᴮ",
@@ -949,13 +1070,12 @@ struct KeyboardView: View {
         
         "+": "+",
         "-": "-",
+        "×": "×",
+        "÷": "÷",
         "=": "=",
-        "(":"(",
-        ")":")",
-        "{":"{",
-        "}":"}",
-        "[":"[",
-        "]":"]",
+        "()": "()",
+        "{}": "{}",
+        "[]": "[]",
         
         "a": "α",
         "b": "β",
@@ -997,15 +1117,14 @@ struct KeyboardView: View {
         "8": "Ⅷ",
         "9": "Ⅸ",
         
-        "+":"+",
-        "-":"-",
-        "=":"=",
-        "(":"(",
-        ")":")",
-        "{":"{",
-        "}":"}",
-        "[":"[",
-        "]":"]",
+        "+": "+",
+        "-": "-",
+        "×": "×",
+        "÷": "÷",
+        "=": "=",
+        "()": "()",
+        "{}": "{}",
+        "[]": "[]",
         
         "a": "Α",
         "b": "Β",
@@ -1034,225 +1153,10 @@ struct KeyboardView: View {
         "y": "Ψ",
         "z": "Ζ"
     ]
-
     
-    func alphabetToGreek(alphabet : String) -> String {
-        switch alphabet {
-        case "1":
-            return "Ⅰ"
-        case "2":
-            return "Ⅱ"
-        case "3":
-            return "Ⅲ"
-        case "4":
-            return "Ⅳ"
-        case "5":
-            return "Ⅴ"
-        case "6":
-            return "Ⅵ"
-        case "7":
-            return "Ⅶ"
-        case "8":
-            return "Ⅷ"
-        case "9":
-            return "Ⅸ"
-        case "0":
-            return "Ⅹ"
-            
-        case "a":
-            return "α"
-        case "b":
-            return "β"
-        case "d":
-            return "δ"
-        case "e":
-            return "ε"
-        case "f":
-            return "φ"
-        case "g":
-            return "γ"
-        case "h":
-            return "η"
-        case "i":
-            return "ι"
-        case "j":
-            return "ϑ"
-        case "k":
-            return "κ"
-        case "l":
-            return "λ"
-        case "m":
-            return "μ"
-        case "n":
-            return "ν"
-        case "o":
-            return "ο"
-        case "p":
-            return "π"
-        case "q":
-            return "θ"
-        case "r":
-            return "ρ"
-        case "s":
-            return "σ"
-        case "t":
-            return "τ"
-        case "u":
-            return "υ"
-        case "v":
-            return "ϖ"
-        case "w":
-            return "ω"
-        case "x":
-            return "χ"
-        case "y":
-            return "ψ"
-        case "z":
-            return "ζ"
-        default:
-            return "x"
-        }
-    }
-    
-    func buttonAction() {
-        if KeyboardNumber == 0 || KeyboardNumber == 3 {
-            key0 = "0"
-            key1 = "1"
-            key2 = "2"
-            key3 = "3"
-            key4 = "4"
-            key5 = "5"
-            key6 = "6"
-            key7 = "7"
-            key8 = "8"
-            key9 = "9"
-            
-            keyPlas = "+"
-            keyMinus = "-"
-            keyEqual = "="
-            keyBracketsS = "("
-            keyBracketsE = ")"
-            keyBracketsMidS = "{"
-            keyBracketsMidE = "}"
-            keyBracketsBigS = "["
-            keyBracketsBigE = "]"
-            
-            keyA = "a"
-            keyB = "b"
-            keyC = "c"
-            keyD = "d"
-            keyE = "e"
-            keyF = "f"
-            keyG = "g"
-            keyH = "h"
-            keyI = "i"
-            keyJ = "j"
-            keyK = "k"
-            keyL = "l"
-            keyM = "m"
-            keyN = "n"
-            keyO = "o"
-            keyP = "p"
-            keyQ = "q"
-            keyR = "r"
-            keyS = "s"
-            keyT = "t"
-            keyU = "u"
-            keyV = "v"
-            keyW = "w"
-            keyX = "x"
-            keyY = "y"
-            keyZ = "z"
-        } else if KeyboardNumber == 1 || KeyboardNumber == 4 {
-            key0 = "₀"
-            key1 = "₁"
-            key2 = "₂"
-            key3 = "₃"
-            key4 = "₄"
-            key5 = "₅"
-            key6 = "₆"
-            key7 = "₇"
-            key8 = "₈"
-            key9 = "₉"
-            
-            keyPlas = "₊"
-            keyMinus = "₋"
-            keyEqual = "₌"
-            keyBracketsS = "₍"
-            keyBracketsE = "₎"
-            
-            keyA = "ₐ"
-            keyB = ""
-            keyC = ""
-            keyD = ""
-            keyE = "ₑ"
-            keyF = ""
-            keyG = ""
-            keyH = "ₕ"
-            keyI = "ᵢ"
-            keyJ = "ⱼ"
-            keyK = "ₖ"
-            keyL = "ₗ"
-            keyM = "ₘ"
-            keyN = "ₙ"
-            keyO = "ₒ"
-            keyP = "ₚ"
-            keyQ = ""
-            keyR = "ᵣ"
-            keyS = "ₛ"
-            keyT = "ₜ"
-            keyU = "ᵤ"
-            keyV = "ᵥ"
-            keyW = ""
-            keyX = "ₓ"
-            keyY = ""
-            keyZ = ""
-        } else if KeyboardNumber == 2 {
-            key0 = "⁰"
-            key1 = "¹"
-            key2 = "²"
-            key3 = "³"
-            key4 = "⁴"
-            key5 = "⁵"
-            key6 = "⁶"
-            key7 = "⁷"
-            key8 = "⁸"
-            key9 = "⁹"
-            
-            keyPlas = "⁺"
-            keyMinus = "⁻"
-            keyEqual = "⁼"
-            keyBracketsS = "⁽"
-            keyBracketsE = "⁾"
-            
-            keyA = "ᵃ"
-            keyB = "ᵇ"
-            keyC = "ᶜ"
-            keyD = "ᵈ"
-            keyE = "ᵉ"
-            keyF = "ᶠ"
-            keyG = "ᵍ"
-            keyH = "ʰ"
-            keyI = "ᶦ"
-            keyJ = "ʲ"
-            keyK = "ᵏ"
-            keyL = "ˡ"
-            keyM = "ᵐ"
-            keyN = "ⁿ"
-            keyO = "ᵒ"
-            keyP = "ᵖ"
-            keyQ = "ᑫ"
-            keyR = "ʳ"
-            keyS = "ˢ"
-            keyT = "ᵗ"
-            keyU = "ᵘ"
-            keyV = "ᵛ"
-            keyW = "ʷ"
-            keyX = "ˣ"
-            keyY = "ʸ"
-            keyZ = "ᶻ"
-        }
-    }
+    let elementKey: [Int: String] = [
+        1: "H"
+    ]
         
 }
 

@@ -13,7 +13,7 @@
 import UIKit
 import SwiftUI
 
-class KeyboardViewController: UIInputViewController {
+class KeyboardViewController: UIInputViewController{
     @State static var count = 0
     
         
@@ -34,6 +34,7 @@ class KeyboardViewController: UIInputViewController {
         }, deleteTextAction: { [weak self] in
             guard let self,
                   self.textDocumentProxy.hasText else { return }
+            
             self.textDocumentProxy.deleteBackward()
         }, moveRightAction: { [weak self] in
             guard let self = self else { return }
