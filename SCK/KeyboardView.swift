@@ -127,53 +127,38 @@ struct KeyboardView: View {
                         keyDisplay(keyString:"=")
                     }
                     
-                    if KeyboardNumber == 4 {
-                        Button {
-                            inputTextAction("≡")
-                        } label: {
-                            Text("≡")
-                                .frame(width: 30, height: 40)
-                        }
+                    Button {
+                        keyAction(key: "⇔")
+                    } label: {
+                        keyDisplay(keyString:"⇔")
                     }
                     
                     Button {
-                        keyAction(key: "()")
-                        moveLeftAction()
+                        bracketAction(key: "()")
                     } label: {
                         Text("( )")
                             .frame(width: 30, height: 40)
                     }
                     
                     Button {
-                        keyAction(key: "{}")
-                        moveLeftAction()
+                        bracketAction(key: "{}")
                     } label: {
                         Text("{ }")
                             .frame(width: 30, height: 40)
                     }
                     
                     Button {
-                        keyAction(key: "[]")
-                        moveLeftAction()
+                        bracketAction(key: "[]")
                     } label: {
                         Text("[ ]")
                             .frame(width: 30, height: 40)
                     }
                     
-                    if shiftSwitch == 0{
-                        Button {
-                            inputTextAction("/")
-                        } label: {
-                            Text("/")
-                                .frame(width: 30, height: 40)
-                        }
-                    } else if shiftSwitch == 1 {
-                        Button {
-                            inputTextAction("\\")
-                        } label: {
-                            Text("\\")
-                                .frame(width: 30, height: 40)
-                        }
+                    Button {
+                        inputTextAction("/")
+                    } label: {
+                        Text("/")
+                            .frame(width: 30, height: 40)
                     }
                 }
                 .background(Color(uiColor: .systemBackground))
@@ -504,10 +489,27 @@ struct KeyboardView: View {
                             Text("|x|")
                                 .frame(width: 30, height: 40)
                         }
+                        
+                        if shiftSwitch == 0 {
+                            Button {
+                                inputTextAction("→")
+                            } label: {
+                                Text("→")
+                                    .frame(width: 30, height: 40)
+                            }
+                        }else if shiftSwitch == 1 {
+                            Button {
+                                inputTextAction("←")
+                            } label: {
+                                Text("←")
+                                    .frame(width: 30, height: 40)
+                            }
+                        }
+                        
                         Button {
-                            inputTextAction("→")
+                            inputTextAction("≡")
                         } label: {
-                            Text("→")
+                            Text("≡")
                                 .frame(width: 30, height: 40)
                         }
                     }
@@ -816,6 +818,61 @@ struct KeyboardView: View {
         }
     }
     
+    func bracketAction(key : String){
+        switch KeyboardNumber {
+        case 0:
+            if shiftSwitch == 0 && defaultKeys [key] != nil {
+                inputTextAction(defaultKeys [key]!)
+                moveLeftAction()
+            } else if defaultShiftKeys [key] != nil {
+                inputTextAction(defaultShiftKeys [key]!)
+                moveLeftAction()
+            }
+        case 1:
+            if shiftSwitch == 0 && subScriptKeys [key] != nil {
+                inputTextAction(subScriptKeys [key]!)
+                moveLeftAction()
+            } else if subScriptShiftKeys [key] != nil {
+                inputTextAction(subScriptShiftKeys [key]!)
+                moveLeftAction()
+            }
+        case 2:
+            if shiftSwitch == 0 && superScriptKeys [key] != nil {
+                inputTextAction(superScriptKeys [key]!)
+                moveLeftAction()
+            } else if superScriptShiftKeys [key] != nil {
+                inputTextAction(superScriptShiftKeys [key]!)
+                moveLeftAction()
+            }
+        case 3:
+            if shiftSwitch == 0 && greekKeys [key] != nil {
+                inputTextAction(greekKeys [key]!)
+                moveLeftAction()
+            } else if greekKeys [key] != nil {
+                inputTextAction(greekShiftKeys [key]!)
+                moveLeftAction()
+            }
+        case 4:
+            if shiftSwitch == 0 {
+                inputTextAction(defaultKeys [key]!)
+                moveLeftAction()
+            } else {
+                inputTextAction(defaultShiftKeys [key]!)
+                moveLeftAction()
+            }
+        case 5:
+            if shiftSwitch == 0 {
+                inputTextAction(defaultKeys [key]!)
+                moveLeftAction()
+            } else {
+                inputTextAction(defaultShiftKeys [key]!)
+                moveLeftAction()
+            }
+        default:
+            inputTextAction("X")
+        }
+    }
+    
     
     let defaultKeys: [String: String] = [
         "0": "0",
@@ -834,6 +891,7 @@ struct KeyboardView: View {
         "×": "×",
         "÷": "÷",
         "=": "=",
+        "⇔": "⇔",
         "()": "()",
         "{}": "{}",
         "[]": "[]",
@@ -883,6 +941,7 @@ struct KeyboardView: View {
         "×": "×",
         "÷": "÷",
         "=": "=",
+        "⇔": "⇔",
         "()": "()",
         "{}": "{}",
         "[]": "[]",
@@ -1073,6 +1132,7 @@ struct KeyboardView: View {
         "×": "×",
         "÷": "÷",
         "=": "=",
+        "⇔": "⇔",
         "()": "()",
         "{}": "{}",
         "[]": "[]",
@@ -1122,6 +1182,7 @@ struct KeyboardView: View {
         "×": "×",
         "÷": "÷",
         "=": "=",
+        "⇔": "⇔",
         "()": "()",
         "{}": "{}",
         "[]": "[]",
@@ -1152,10 +1213,6 @@ struct KeyboardView: View {
         "x": "Χ",
         "y": "Ψ",
         "z": "Ζ"
-    ]
-    
-    let elementKey: [Int: String] = [
-        1: "H"
     ]
         
 }
