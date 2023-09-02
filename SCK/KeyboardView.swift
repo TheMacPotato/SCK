@@ -136,22 +136,19 @@ struct KeyboardView: View {
                     Button {
                         bracketAction(key: "()")
                     } label: {
-                        Text("( )")
-                            .frame(width: 30, height: 40)
+                        keyDisplay(keyString: "( )")
                     }
                     
                     Button {
                         bracketAction(key: "{}")
                     } label: {
-                        Text("{ }")
-                            .frame(width: 30, height: 40)
+                        keyDisplay(keyString: "{ }")
                     }
                     
                     Button {
                         bracketAction(key: "[]")
                     } label: {
-                        Text("[ ]")
-                            .frame(width: 30, height: 40)
+                        keyDisplay(keyString: "[ ]")
                     }
                     
                     Button {
@@ -892,9 +889,9 @@ struct KeyboardView: View {
         "÷": "÷",
         "=": "=",
         "⇔": "⇔",
-        "()": "()",
-        "{}": "{}",
-        "[]": "[]",
+        "( )": "()",
+        "{ }": "{}",
+        "[ ]": "[]",
         
         "a": "a",
         "b": "b",
@@ -942,9 +939,9 @@ struct KeyboardView: View {
         "÷": "÷",
         "=": "=",
         "⇔": "⇔",
-        "()": "()",
-        "{}": "{}",
-        "[]": "[]",
+        "( )": "()",
+        "{ }": "{}",
+        "[ ]": "[]",
         
         "a": "A",
         "b": "B",
@@ -989,7 +986,7 @@ struct KeyboardView: View {
         "+": "₊",
         "-": "₋",
         "=": "₌",
-        "()":"₍₎",
+        "( )":"₍₎",
         
         "a": "ₐ",
         "e": "ₑ",
@@ -1025,7 +1022,7 @@ struct KeyboardView: View {
         "+": "₊",
         "-": "₋",
         "=": "₌",
-        "()":"₍₎",
+        "( )":"₍₎",
     ]
 
     let superScriptKeys: [String: String] = [
@@ -1043,7 +1040,7 @@ struct KeyboardView: View {
         "+": "⁺",
         "-": "⁻",
         "=": "⁼",
-        "()":"⁽⁾",
+        "( )":"⁽⁾",
         
         "a": "ᵃ",
         "b": "ᵇ",
@@ -1087,7 +1084,7 @@ struct KeyboardView: View {
         "+": "⁺",
         "-": "⁻",
         "=": "⁼",
-        "()":"⁽⁾",
+        "( )":"⁽⁾",
         
         "a": "ᴬ",
         "b": "ᴮ",
@@ -1133,9 +1130,9 @@ struct KeyboardView: View {
         "÷": "÷",
         "=": "=",
         "⇔": "⇔",
-        "()": "()",
-        "{}": "{}",
-        "[]": "[]",
+        "( )": "()",
+        "{ }": "{}",
+        "[ ]": "[]",
         
         "a": "α",
         "b": "β",
@@ -1183,9 +1180,9 @@ struct KeyboardView: View {
         "÷": "÷",
         "=": "=",
         "⇔": "⇔",
-        "()": "()",
-        "{}": "{}",
-        "[]": "[]",
+        "( )": "()",
+        "{ }": "{}",
+        "[ ]": "[]",
         
         "a": "Α",
         "b": "Β",
