@@ -19,10 +19,10 @@ struct SuperscriptKeyboardView: View {
         let isUpper = shift.state == .on     // Shift が ON ならアルファベットを大文字表示
         
         VStack {
-            // ① 上付き数字行
+            // 上付き数字行
             NumRow(keyAction: keyAction)
             
-            // ② 演算子＋括弧行
+            // 演算子＋括弧行
             OperatorRow(
                 opKeys: ["+","-","×","÷","=","⇔"],
                 bracketKeys: ["( )","{ }","[ ]"],
@@ -31,7 +31,7 @@ struct SuperscriptKeyboardView: View {
                 slashAction: { inputTextAction("/") }
             )
             
-            // ③ アルファベット行（Shift で大文字表示）
+            // アルファベット行（Shift で大文字表示）
             KeyRow(
                 keys: isUpper ? ["Q","W","E","R","T","Y","U","I","O","P"]
                 : ["q","w","e","r","t","y","u","i","o","p"],
@@ -55,6 +55,8 @@ struct SuperscriptKeyboardView: View {
     }
 }
 
+// MARK: - プレビュー（Xcode Canvas用）
+/// 入力アクションの挙動を print で確認可能
 #Preview {
     SuperscriptKeyboardView(
         keyAction: { print("Key:", $0) },

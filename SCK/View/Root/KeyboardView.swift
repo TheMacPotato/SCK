@@ -8,24 +8,24 @@
 import SwiftUI
 import UIKit
 
+// MARK: - メインのキーボードビュー
 struct KeyboardView: View {
     
-    let needsInputModeSwitchKey: Bool
-    let nextKeyboardAction: Selector
-    let inputTextAction: (String) -> Void
-    let deleteTextAction: () -> Void
-    let moveRightAction: () -> Void
-    let moveLeftAction: () -> Void
-    @State var keyboardMode: KeyboardMode = .default
+    // 外部から渡されるパラメータ
+    let needsInputModeSwitchKey: Bool       // 地球儀キーが必要かどうか
+    let nextKeyboardAction: Selector        // 次のキーボードに切り替えるためのアクション
+    let inputTextAction: (String) -> Void   // 入力処理
+    let deleteTextAction: () -> Void        // 削除処理
+    let moveRightAction: () -> Void         // カーソルを右へ移動
+    let moveLeftAction: () -> Void          // カーソルを左へ移動
     
-    @StateObject private var shift = ShiftState()
-    
-    
+    @State private var keyboardMode: KeyboardMode = .default   // 現在のキーボードモード
+    @StateObject private var shift = ShiftState()              // Shift状態の保持（大文字小文字）
     
     var body: some View {
         
         VStack{
-            
+            // 現在のキーボードモードに応じて適切なサブキーボードを表示
             switch keyboardMode {
             case .default:
                 DefaultKeyboardView(
@@ -72,15 +72,16 @@ struct KeyboardView: View {
                 )
                 .environmentObject(shift)
             }
-            
+            // 下部のツールバー（モード切替ボタン、スペース、カーソル移動など）
             HStack{
-                // Next Keybaord
                 if needsInputModeSwitchKey {
+                    // 地球儀ボタン（次のキーボードへ切り替え）
                     NextKeyboardButton(systemName: "globe",
                                        action: nextKeyboardAction)
                     .frame(width: 25, height: 30)
                 }
 
+                // キーボードモード切り替えボタン群（現在のモードは灰色背景）
                 Button(){
                     keyboardMode = .default
                 } label: {
@@ -161,6 +162,7 @@ struct KeyboardView: View {
                     }
                 }
 
+                // カーソル移動・スペース・改行などの操作ボタン
                 Button(){
                     moveLeftAction()
                 } label: {
@@ -203,7 +205,8 @@ struct KeyboardView: View {
         .frame(height: 300)
     }
 
-    /// 入力文字を Shift 状態とキーボードモードに応じて変換
+    
+    // MARK: - 入力文字の変換処理（Shiftとモードに応じて切替）
     func inputTextChange(alphabet: String) -> String {
         switch keyboardMode {
         case .greek:
@@ -222,6 +225,8 @@ struct KeyboardView: View {
         }
     }
     
+    
+    // MARK: - 通常キー入力アクション（モードごとに処理を切り替え）
     func keyAction(key : String){
         switch keyboardMode {
         case .default:
@@ -257,6 +262,7 @@ struct KeyboardView: View {
         }
     }
     
+    // MARK: - 括弧などの入力後にカーソルを戻す処理
     func bracketAction(key : String){
         switch keyboardMode {
         case .default:
@@ -302,7 +308,7 @@ struct KeyboardView: View {
         }
     }
     
-    
+    // 以下、各モード用の文字変換辞書
     let defaultKeys: [String: String] = [
         "0": "0",
         "1": "1",
@@ -656,7 +662,7 @@ struct KeyboardView_Previews: PreviewProvider {
             moveRightAction: {},
             moveLeftAction: {}
         )
-        .environmentObject(ShiftState())      // ← ShiftState を注入
+        .environmentObject(ShiftState())
         .previewLayout(.sizeThatFits)
     }
 }

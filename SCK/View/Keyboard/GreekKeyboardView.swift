@@ -7,44 +7,47 @@
 
 import SwiftUI
 
-/// ギリシャ文字キーボード
+// MARK: - ギリシャ文字キーボードのレイアウトビュー
+/// ローマ数字・演算子・ギリシャ文字を含む構成で、Shift 状態に応じて大文字・小文字を切り替える
 struct GreekKeyboardView: View {
-    @EnvironmentObject var shift: ShiftState               // Shift 状態（大文字切替）
-    let keyAction: (String) -> Void
-    let bracketAction: (String) -> Void
-    let inputTextAction: (String) -> Void
-    let deleteAction: () -> Void
+    @EnvironmentObject var shift: ShiftState               // Shiftキーの状態（on/off）を共有
     
-    // ギリシャ文字配列（小文字）
+    // 外部から渡されるアクション定義
+    let keyAction: (String) -> Void                        // 通常キー入力
+    let bracketAction: (String) -> Void                    // 括弧入力（( ) など）
+    let inputTextAction: (String) -> Void                  // 任意文字入力（ここでは "/"）
+    let deleteAction: () -> Void                           // 削除処理
+    
+    // ギリシャ文字の各行（小文字）
     private let row1Lower = ["α","β","γ","δ","ε","ζ","η","θ","ι","κ"]
     private let row2Lower = ["λ","μ","ν","ξ","ο","π","ρ","σ","τ"]
     private let row3Lower = ["υ","φ","χ","ψ","ω"]
     
-    // 大文字は lower.map { $0.uppercased() }
+    // Shift がオンのときは大文字を表示
     private var row1Upper: [String] { row1Lower.map { $0.uppercased() } }
     private var row2Upper: [String] { row2Lower.map { $0.uppercased() } }
     private var row3Upper: [String] { row3Lower.map { $0.uppercased() } }
     
     var body: some View {
-        let isUpper = shift.state == .on
+        let isUpper = shift.state == .on   // Shift 状態に応じて大文字・小文字を切り替え
         
         VStack {
-            // ① ローマ数字行
+            // ローマ数字の行（I〜X）— 数式や表記用
             KeyRow(
                 keys: ["I","II","III","IV","V","VI","VII","VIII","IX","X"],
                 action: keyAction
             )
             
-            // ② 演算子＋括弧行
+            // 演算子と括弧の行
             OperatorRow(
-                opKeys: ["+","-","×","÷","=","⇔"],
-                bracketKeys: ["( )","{ }","[ ]"],
+                opKeys: ["+","-","×","÷","=","⇔"],               // 演算子
+                bracketKeys: ["( )","{ }","[ ]"],                // 括弧
                 opAction: keyAction,
                 bracketAction: bracketAction,
-                slashAction: { inputTextAction("/") }
+                slashAction: { inputTextAction("/") }           // スラッシュだけ専用処理
             )
             
-            // ③ ギリシャ文字行
+            // ギリシャ文字行
             KeyRow(keys: isUpper ? row1Upper : row1Lower, action: keyAction)
             KeyRow(keys: isUpper ? row2Upper : row2Lower, action: keyAction)
             HStack {
@@ -56,6 +59,8 @@ struct GreekKeyboardView: View {
     }
 }
 
+// MARK: - プレビュー（Xcode Canvas用）
+/// アクションを print で可視化して確認できる
 #Preview {
     GreekKeyboardView(
         keyAction: { print("Key:", $0) },

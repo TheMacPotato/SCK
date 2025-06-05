@@ -7,22 +7,25 @@
 
 import SwiftUI
 
-/// 下付き文字キーボード
+// MARK: - 下付き文字キーボードビュー
+/// 数式や化学式で使われる下付き数字や文字を入力する専用レイアウト
 struct SubscriptKeyboardView: View {
     @EnvironmentObject var shift: ShiftState
-    let keyAction: (String) -> Void
-    let bracketAction: (String) -> Void
-    let inputTextAction: (String) -> Void
-    let deleteAction: () -> Void
+    
+    // 各アクションは外部から注入される
+    let keyAction: (String) -> Void                        // 通常キー入力処理
+    let bracketAction: (String) -> Void                    // 括弧キー入力処理（括弧後カーソル戻しなど）
+    let inputTextAction: (String) -> Void                  // 任意の文字入力（ここでは "/" など）
+    let deleteAction: () -> Void                           // バックスペース処理
     
     var body: some View {
         let isUpper = shift.state == .on   // Shift で大文字／小文字切替（下付き文字は数字のみなので行 1 へ影響なし）
         
         VStack {
-            // ① 下付き数字行
+            // 下付き数字行
             NumRow(keyAction: keyAction)
             
-            // ② 演算子＋括弧行
+            // 演算子＋括弧行
             OperatorRow(
                 opKeys: ["+","-","×","÷","=","⇔"],
                 bracketKeys: ["( )","{ }","[ ]"],
@@ -31,7 +34,7 @@ struct SubscriptKeyboardView: View {
                 slashAction: { inputTextAction("/") }
             )
             
-            // ③ アルファベット行（Shift で大文字表示）
+            // アルファベット行（Shift で大文字表示）
             KeyRow(
                 keys: isUpper ? ["Q","W","E","R","T","Y","U","I","O","P"]
                 : ["q","w","e","r","t","y","u","i","o","p"],
@@ -55,6 +58,9 @@ struct SubscriptKeyboardView: View {
     }
 }
 
+
+// MARK: - プレビュー（Xcode Canvas用）
+/// 入力アクションの挙動を print で確認可能
 #Preview {
     SubscriptKeyboardView(
         keyAction: { print("Key action:", $0) },
