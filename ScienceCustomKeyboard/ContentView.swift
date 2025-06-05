@@ -9,17 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
-            ScrollView {
-                VStack {
-                    
+        NavigationStack {
+            GeometryReader { geometry in
+                ScrollView {
                     if let videoURL = Bundle.main.url(forResource: "HowTo", withExtension: "mp4") {
                         VideoPlayerView(videoURL: videoURL)
                             .aspectRatio(1179.0/2556.0, contentMode: .fill) // アスペクト比を設定
-                            .frame(width: 300)
                         
                     }else {
-                        Text("Whrere is Video?")
+                        Text("動画が見つかりません")
                     }
                     
                     Spacer()
@@ -76,15 +74,7 @@ struct ContentView: View {
                 }
                 .padding()
             }
-            .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-            VStack {
-                Spacer()
-                    .frame(height: 10)
-                Text("使い方")
-                    .fontWeight(.bold)
-                    .font(.title)
-                Spacer()
-            }
+            .navigationTitle("使い方")
         }
     }
 }
