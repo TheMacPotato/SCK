@@ -63,8 +63,9 @@ class KeyboardViewController: UIInputViewController{
             moveLeftAction: { [weak self] in
                 guard let self = self else { return }
                 
-                if let before = self.textDocumentProxy.documentContextBeforeInput {
-                    let offset = before.prefix(1).utf16.count * -1
+                if let before = self.textDocumentProxy.documentContextBeforeInput,
+                   !before.isEmpty {
+                    let offset = -before.suffix(1).utf16.count
                     self.textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
                 } else {
                     // 文頭のさらに外：1文字分戻す
