@@ -3,20 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		CE4104A32C3FDBDE005837E9 /* HowTo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CE4104A22C3FDBDE005837E9 /* HowTo.mp4 */; };
 		CE4104A52C3FDCCB005837E9 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4104A42C3FDCCB005837E9 /* VideoPlayerView.swift */; };
 		CE8ECF0C2A72512F003060D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE8ECF0B2A72512F003060D8 /* Assets.xcassets */; };
-		CE9202072A57A9C500A6F44D /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9202062A57A9C500A6F44D /* KeyboardViewController.swift */; };
 		CE92020B2A57A9C500A6F44D /* SCK.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CE9202042A57A9C500A6F44D /* SCK.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CE9202102A57AF4A00A6F44D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92020F2A57AF4A00A6F44D /* KeyboardView.swift */; };
-		CE9202122A57AF8F00A6F44D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92020F2A57AF4A00A6F44D /* KeyboardView.swift */; };
-		CE9202142A57B6A100A6F44D /* NextKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9202132A57B6A100A6F44D /* NextKeyboardButton.swift */; };
-		CE9202152A57B86700A6F44D /* NextKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9202132A57B6A100A6F44D /* NextKeyboardButton.swift */; };
-		CED20B7E2A57C05600447667 /* View+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED20B7D2A57C05600447667 /* View+BackgroundColor.swift */; };
 		CEE26E412A418286009ACA83 /* ScienceCustomKeyboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE26E402A418285009ACA83 /* ScienceCustomKeyboardApp.swift */; };
 		CEE26E432A418286009ACA83 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE26E422A418286009ACA83 /* ContentView.swift */; };
 		CEE26E452A418286009ACA83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE26E442A418286009ACA83 /* Assets.xcassets */; };
@@ -36,14 +30,12 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		CEE26E5D2A41829B009ACA83 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 13;
+			dstSubfolder = PlugIns;
 			files = (
 				CE92020B2A57A9C500A6F44D /* SCK.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -52,11 +44,7 @@
 		CE4104A42C3FDCCB005837E9 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		CE8ECF0B2A72512F003060D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ScienceCustomKeyboard/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		CE9202042A57A9C500A6F44D /* SCK.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SCK.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE9202062A57A9C500A6F44D /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		CE9202082A57A9C500A6F44D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE92020F2A57AF4A00A6F44D /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
-		CE9202132A57B6A100A6F44D /* NextKeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextKeyboardButton.swift; sourceTree = "<group>"; };
-		CED20B7D2A57C05600447667 /* View+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+BackgroundColor.swift"; sourceTree = "<group>"; };
 		CEE26E3D2A418285009ACA83 /* ScienceCustomKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScienceCustomKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE26E402A418285009ACA83 /* ScienceCustomKeyboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceCustomKeyboardApp.swift; sourceTree = "<group>"; };
 		CEE26E422A418286009ACA83 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,20 +52,62 @@
 		CEE26E472A418286009ACA83 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CED322B12DF15755007D95A8 /* Exceptions for "Extension" folder in "ScienceCustomKeyboard" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"View+BackgroundColor.swift",
+			);
+			target = CEE26E3C2A418285009ACA83 /* ScienceCustomKeyboard */;
+		};
+		CED322B22DF1576A007D95A8 /* Exceptions for "Controller" folder in "ScienceCustomKeyboard" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				KeyboardViewController.swift,
+			);
+			target = CEE26E3C2A418285009ACA83 /* ScienceCustomKeyboard */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CED322A72DF1569E007D95A8 /* Controller */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CED322B22DF1576A007D95A8 /* Exceptions for "Controller" folder in "ScienceCustomKeyboard" target */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CED322A92DF156B0007D95A8 /* Model */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CED322AB2DF156C6007D95A8 /* View */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = View;
+			sourceTree = "<group>";
+		};
+		CED322B02DF1571E007D95A8 /* Extension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CED322B12DF15755007D95A8 /* Exceptions for "Extension" folder in "ScienceCustomKeyboard" target */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		CE9202012A57A9C500A6F44D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CEE26E3A2A418285009ACA83 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -85,10 +115,10 @@
 		CE9202052A57A9C500A6F44D /* SCK */ = {
 			isa = PBXGroup;
 			children = (
-				CE9202062A57A9C500A6F44D /* KeyboardViewController.swift */,
-				CED20B7D2A57C05600447667 /* View+BackgroundColor.swift */,
-				CE9202132A57B6A100A6F44D /* NextKeyboardButton.swift */,
-				CE92020F2A57AF4A00A6F44D /* KeyboardView.swift */,
+				CED322A92DF156B0007D95A8 /* Model */,
+				CED322A72DF1569E007D95A8 /* Controller */,
+				CED322AB2DF156C6007D95A8 /* View */,
+				CED322B02DF1571E007D95A8 /* Extension */,
 				CE8ECF0B2A72512F003060D8 /* Assets.xcassets */,
 				CE9202082A57A9C500A6F44D /* Info.plist */,
 			);
@@ -147,7 +177,11 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
+			fileSystemSynchronizedGroups = (
+				CED322A72DF1569E007D95A8 /* Controller */,
+				CED322A92DF156B0007D95A8 /* Model */,
+				CED322AB2DF156C6007D95A8 /* View */,
+				CED322B02DF1571E007D95A8 /* Extension */,
 			);
 			name = SCK;
 			productName = SCK;
@@ -168,6 +202,12 @@
 			dependencies = (
 				CE92020A2A57A9C500A6F44D /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				CED322A72DF1569E007D95A8 /* Controller */,
+				CED322A92DF156B0007D95A8 /* Model */,
+				CED322AB2DF156C6007D95A8 /* View */,
+				CED322B02DF1571E007D95A8 /* Extension */,
+			);
 			name = ScienceCustomKeyboard;
 			productName = ScienceCustomKeyboard;
 			productReference = CEE26E3D2A418285009ACA83 /* ScienceCustomKeyboard.app */;
@@ -181,7 +221,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					CE9202032A57A9C500A6F44D = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -192,7 +232,6 @@
 				};
 			};
 			buildConfigurationList = CEE26E382A418285009ACA83 /* Build configuration list for PBXProject "ScienceCustomKeyboard" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -201,6 +240,7 @@
 				ja,
 			);
 			mainGroup = CEE26E342A418285009ACA83;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = CEE26E3E2A418285009ACA83 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -214,47 +254,33 @@
 /* Begin PBXResourcesBuildPhase section */
 		CE9202022A57A9C500A6F44D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				CE8ECF0C2A72512F003060D8 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CEE26E3B2A418285009ACA83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				CE4104A32C3FDBDE005837E9 /* HowTo.mp4 in Resources */,
 				CEE26E482A418286009ACA83 /* Preview Assets.xcassets in Resources */,
 				CEE26E452A418286009ACA83 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE9202002A57A9C500A6F44D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
-				CE9202072A57A9C500A6F44D /* KeyboardViewController.swift in Sources */,
-				CE9202102A57AF4A00A6F44D /* KeyboardView.swift in Sources */,
-				CED20B7E2A57C05600447667 /* View+BackgroundColor.swift in Sources */,
-				CE9202142A57B6A100A6F44D /* NextKeyboardButton.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CEE26E392A418285009ACA83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
-				CE9202122A57AF8F00A6F44D /* KeyboardView.swift in Sources */,
 				CEE26E432A418286009ACA83 /* ContentView.swift in Sources */,
 				CEE26E412A418286009ACA83 /* ScienceCustomKeyboardApp.swift in Sources */,
-				CE9202152A57B86700A6F44D /* NextKeyboardButton.swift in Sources */,
 				CE4104A52C3FDCCB005837E9 /* VideoPlayerView.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -267,13 +293,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		CE92020D2A57A9C500A6F44D /* Debug */ = {
+		CE92020D2A57A9C500A6F44D /* Debug configuration for PBXNativeTarget "SCK" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = EN558C9YRS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SCK/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SCK;
@@ -294,13 +319,12 @@
 			};
 			name = Debug;
 		};
-		CE92020E2A57A9C500A6F44D /* Release */ = {
+		CE92020E2A57A9C500A6F44D /* Release configuration for PBXNativeTarget "SCK" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = EN558C9YRS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SCK/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SCK;
@@ -321,11 +345,12 @@
 			};
 			name = Release;
 		};
-		CEE26E492A418286009ACA83 /* Debug */ = {
+		CEE26E492A418286009ACA83 /* Debug configuration for PBXProject "ScienceCustomKeyboard" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -356,6 +381,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = EN558C9YRS;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -383,11 +409,12 @@
 			};
 			name = Debug;
 		};
-		CEE26E4A2A418286009ACA83 /* Release */ = {
+		CEE26E4A2A418286009ACA83 /* Release configuration for PBXProject "ScienceCustomKeyboard" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -418,6 +445,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = EN558C9YRS;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -439,10 +467,9 @@
 			};
 			name = Release;
 		};
-		CEE26E4C2A418286009ACA83 /* Debug */ = {
+		CEE26E4C2A418286009ACA83 /* Debug configuration for PBXNativeTarget "ScienceCustomKeyboard" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -472,10 +499,9 @@
 			};
 			name = Debug;
 		};
-		CEE26E4D2A418286009ACA83 /* Release */ = {
+		CEE26E4D2A418286009ACA83 /* Release configuration for PBXNativeTarget "ScienceCustomKeyboard" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -511,28 +537,25 @@
 		CE92020C2A57A9C500A6F44D /* Build configuration list for PBXNativeTarget "SCK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE92020D2A57A9C500A6F44D /* Debug */,
-				CE92020E2A57A9C500A6F44D /* Release */,
+				CE92020D2A57A9C500A6F44D /* Debug configuration for PBXNativeTarget "SCK" */,
+				CE92020E2A57A9C500A6F44D /* Release configuration for PBXNativeTarget "SCK" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		CEE26E382A418285009ACA83 /* Build configuration list for PBXProject "ScienceCustomKeyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CEE26E492A418286009ACA83 /* Debug */,
-				CEE26E4A2A418286009ACA83 /* Release */,
+				CEE26E492A418286009ACA83 /* Debug configuration for PBXProject "ScienceCustomKeyboard" */,
+				CEE26E4A2A418286009ACA83 /* Release configuration for PBXProject "ScienceCustomKeyboard" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		CEE26E4B2A418286009ACA83 /* Build configuration list for PBXNativeTarget "ScienceCustomKeyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CEE26E4C2A418286009ACA83 /* Debug */,
-				CEE26E4D2A418286009ACA83 /* Release */,
+				CEE26E4C2A418286009ACA83 /* Debug configuration for PBXNativeTarget "ScienceCustomKeyboard" */,
+				CEE26E4D2A418286009ACA83 /* Release configuration for PBXNativeTarget "ScienceCustomKeyboard" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */

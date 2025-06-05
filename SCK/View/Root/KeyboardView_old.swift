@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-struct KeyboardView: View {
+struct KeyboardView_old: View {
     
     let needsInputModeSwitchKey: Bool
     let nextKeyboardAction: Selector
@@ -1172,9 +1172,9 @@ struct KeyboardView: View {
         
 }
 
-struct KeyboardView_Previews: PreviewProvider {
+struct KeyboardView_old_Previews: PreviewProvider {
     static var previews: some View {
-        KeyboardView(needsInputModeSwitchKey: true, nextKeyboardAction: Selector(("dummy"))) { _ in } deleteTextAction: {} moveRightAction: {} moveLeftAction: {}
+        KeyboardView_old(needsInputModeSwitchKey: true, nextKeyboardAction: Selector(("dummy"))) { _ in } deleteTextAction: {} moveRightAction: {} moveLeftAction: {}
     }
     
 }
