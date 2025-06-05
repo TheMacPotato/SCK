@@ -1,18 +1,35 @@
-//
-//  VideoPlayerView.swift
-//  ScienceCustomKeyboard
-//
-//  Created by Yoshiki on 2024/07/11.
-//
-
 import SwiftUI
+import AVKit
 
-struct VideoPlayerView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct VideoPlayerView: UIViewControllerRepresentable {
+    let videoURL: URL
+
+    class Coordinator: NSObject {
+        var playerLooper: AVPlayerLooper?
     }
-}
 
-#Preview {
-    VideoPlayerView()
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
+    func makeUIViewController(context: Context) -> AVPlayerViewController {
+        let playerViewController = AVPlayerViewController()
+        let player = AVQueuePlayer()
+        let playerItem = AVPlayerItem(url: videoURL)
+        context.coordinator.playerLooper = AVPlayerLooper(player: player, templateItem: playerItem)
+
+        playerViewController.player = player
+        playerViewController.showsPlaybackControls = false
+        player.isMuted = true // ミュートにする
+        player.play()
+
+        // プレイヤービューのコンテンツモードをアスペクトフィルに設定
+        playerViewController.videoGravity = .resizeAspectFill
+
+        return playerViewController
+    }
+
+    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
+        // 更新時の処理は不要
+    }
 }

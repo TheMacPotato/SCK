@@ -6,17 +6,12 @@
 //
 
 import SwiftUI
-@UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-    @MainActor class UIInputViewController : UIViewController{
-        struct ScienceCustomKeyboardApp: App {
-            var body: some Scene {
-                WindowGroup {
-                    ContentView()
-                }
-            }
+@main
+struct ScienceCustomKeyboardApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
         }
     }
 }
