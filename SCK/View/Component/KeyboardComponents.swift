@@ -12,8 +12,6 @@ import SwiftUI
 struct KeyRow: View {
     let keys: [String]                  // 表示する文字キーの配列（例："a", "b", "c"）
     let action: (String) -> Void        // キー押下時に呼び出す処理（文字を渡す）
-    @Environment(\.colorScheme) private var colorScheme
-
     var body: some View {
         HStack {
             // 各キーをButtonとして生成
@@ -21,8 +19,8 @@ struct KeyRow: View {
                 Button { action(key) } label: {
                     Text(key)
                         .frame(width: 30, height: 40)   // キーのサイズ
-                        .foregroundColor(colorScheme == .dark ? .white : .black)    // 文字色
-                        .background(colorScheme == .dark ? .black : .white)         // 背景色
+                        .foregroundColor(.white)    // 文字色
+                        .background(Color.gray)         // 背景色
                         .clipShape(RoundedRectangle(cornerRadius: 4))               // 角丸キー
                 }
             }
@@ -39,9 +37,8 @@ struct OperatorRow: View {
     let bracketAction: (String) -> Void       // 括弧キー用の処理
     let slashAction: () -> Void               // スラッシュ専用の処理（特別扱い）
     
-    @Environment(\.colorScheme) private var colorScheme
-
     var body: some View {
+
         HStack {
             // 演算子群を表示（opActionで処理）
             KeyRow(keys: opKeys, action: opAction)
@@ -51,8 +48,8 @@ struct OperatorRow: View {
                 Button { bracketAction(key) } label: {
                     Text(key)
                         .frame(width: 30, height: 40)
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .background(colorScheme == .dark ? .black : .white)
+                        .foregroundColor(.white)
+                        .background(Color.gray)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
             }
@@ -60,8 +57,8 @@ struct OperatorRow: View {
             Button(action: slashAction) {
                 Text("/")
                     .frame(width: 30, height: 40)
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                    .background(colorScheme == .dark ? .black : .white)
+                    .foregroundColor(.white)
+                    .background(Color.gray)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
             }
         }

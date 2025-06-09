@@ -79,6 +79,8 @@ struct KeyboardView: View {
                     NextKeyboardButton(systemName: "globe",
                                        action: nextKeyboardAction)
                     .frame(width: 25, height: 30)
+                    .background(Color.gray)
+                    .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
                 // キーボードモード切り替えボタン群（現在のモードは灰色背景）
@@ -168,7 +170,7 @@ struct KeyboardView: View {
                 } label: {
                     Image(systemName: "chevron.backward")
                         .frame(width: 30, height: 30)
-                        .background(Color(uiColor: .systemBackground))
+                        .background(Color.gray)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
@@ -177,7 +179,7 @@ struct KeyboardView: View {
                 } label: {
                     Image(systemName: "space")
                         .frame(width: 30, height: 30)
-                        .background(Color(uiColor: .systemBackground))
+                        .background(Color.gray)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
@@ -186,7 +188,7 @@ struct KeyboardView: View {
                 } label: {
                     Image(systemName: "chevron.forward")
                         .frame(width: 30, height: 30)
-                        .background(Color(uiColor: .systemBackground))
+                        .background(Color.gray)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
@@ -196,12 +198,12 @@ struct KeyboardView: View {
                     Image(systemName: "return.left")
                         .frame(width: 35, height: 30)
                         .foregroundColor(Color.white)
-                        .background(Color.blue)
+                        .background(Color.gray)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
             }
         }
-        .foregroundColor(Color(uiColor: .label))
+        .foregroundColor(Color.white)
         .frame(height: 300)
     }
 
