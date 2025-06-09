@@ -10,46 +10,36 @@ import SwiftUI
 /// 上付き文字キーボード
 struct SuperscriptKeyboardView: View {
     @EnvironmentObject var shift: ShiftState      // Shift 状態（大文字切替）
-    let keyAction: (String) -> Void
-    let bracketAction: (String) -> Void
-    let inputTextAction: (String) -> Void
-    let deleteAction: () -> Void
     
     var body: some View {
         let isUpper = shift.state == .on     // Shift が ON ならアルファベットを大文字表示
         
         VStack {
             // 上付き数字行
-            NumRow(keyAction: keyAction)
+            NumRow()
             
             // 演算子＋括弧行
             OperatorRow(
-                opKeys: ["+","-","×","÷","=","⇔"],
-                bracketKeys: ["( )","{ }","[ ]"],
-                opAction: keyAction,
-                bracketAction: bracketAction,
-                slashAction: { inputTextAction("/") }
+                opKeys: ["+","-","×","÷","=","/"],
+                bracketKeys: ["( )","{ }","[ ]"]
             )
             
             // アルファベット行（Shift で大文字表示）
             KeyRow(
                 keys: isUpper ? ["Q","W","E","R","T","Y","U","I","O","P"]
-                : ["q","w","e","r","t","y","u","i","o","p"],
-                action: keyAction
+                : ["q","w","e","r","t","y","u","i","o","p"]
             )
             KeyRow(
                 keys: isUpper ? ["A","S","D","F","G","H","J","K","L"]
-                : ["a","s","d","f","g","h","j","k","l"],
-                action: keyAction
+                : ["a","s","d","f","g","h","j","k","l"]
             )
             HStack {
                 ShiftKeyButton()
                 KeyRow(
                     keys: isUpper ? ["Z","X","C","V","B","N","M"]
-                    : ["z","x","c","v","b","n","m"],
-                    action: keyAction
+                    : ["z","x","c","v","b","n","m"]
                 )
-                DeleteButton(deleteAction: deleteAction)
+                DeleteButton()
             }
         }
     }
@@ -58,11 +48,6 @@ struct SuperscriptKeyboardView: View {
 // MARK: - プレビュー（Xcode Canvas用）
 /// 入力アクションの挙動を print で確認可能
 #Preview {
-    SuperscriptKeyboardView(
-        keyAction: { print("Key:", $0) },
-        bracketAction: { print("Bracket:", $0) },
-        inputTextAction: { print("Input:", $0) },
-        deleteAction: { print("Delete") }
-    )
+    SuperscriptKeyboardView()
     .environmentObject(ShiftState())
 }

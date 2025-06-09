@@ -25,12 +25,6 @@ private enum MathCategory: String, CaseIterable, Identifiable {
 struct MathKeyboardView: View {
     @EnvironmentObject var shift: ShiftState
     
-    // アクション定義（外部から注入）
-    let keyAction: (String) -> Void
-    let bracketAction: (String) -> Void
-    let inputTextAction: (String) -> Void
-    let deleteAction: () -> Void
-    
     // カテゴリ別の行配列
     private let symbols: [MathCategory: [[String]]] = [
         .basic: [
@@ -68,15 +62,12 @@ struct MathKeyboardView: View {
             .padding(.horizontal)
             
             // MARK: - 数字キーの行（共通）
-            NumRow(keyAction: keyAction)
+            NumRow()
             
             // MARK: - 基本演算子＋括弧（共通の行）
             OperatorRow(
-                opKeys: ["+","-","×","÷","=","±"],
+                opKeys: ["+","-","×","÷","=","±","/"],
                 bracketKeys: ["( )","{ }","[ ]"],
-                opAction: keyAction,
-                bracketAction: bracketAction,
-                slashAction: { inputTextAction("/") }
             )
             
             // MARK: - 選択カテゴリに応じた数学記号行の表示
@@ -86,12 +77,11 @@ struct MathKeyboardView: View {
                     if index == rows.count - 1 {
                         HStack {
                             ShiftKeyButton()
-                            KeyRow(keys: row, action: keyAction)
-                            DeleteButton(deleteAction: deleteAction)
+                            KeyRow(keys: row)
                         }
                     } else {
                         // 通常行は KeyRow で水平表示
-                        KeyRow(keys: row, action: keyAction)
+                        KeyRow(keys: row)
                     }
                 }
             }
@@ -101,11 +91,6 @@ struct MathKeyboardView: View {
 
 // MARK: - プレビュー（開発用）
 #Preview {
-    MathKeyboardView(
-        keyAction: { print("Key:", $0) },
-        bracketAction: { print("Bracket:", $0) },
-        inputTextAction: { print("Input:", $0) },
-        deleteAction: {print("Delete")}
-    )
+    MathKeyboardView()
     .environmentObject(ShiftState())
 }

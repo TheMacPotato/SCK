@@ -8,17 +8,13 @@
 import SwiftUI
 
 public struct DeleteButton: View {
-    public let deleteAction: () -> Void
+    @EnvironmentObject var actionContext: KeyboardActionContext
     @State private var deleteTimer: Timer?
     @State private var isPressing = false
 
-    public init(deleteAction: @escaping () -> Void) {
-        self.deleteAction = deleteAction
-    }
-
     public var body: some View {
         Button(action: {
-            deleteAction()
+            actionContext.delete()
         }) {
             Image(systemName: "delete.left")
                 .frame(width: 44, height: 40)
@@ -34,7 +30,7 @@ public struct DeleteButton: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             if isPressing {
                                 deleteTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-                                    deleteAction()
+                                    actionContext.delete()
                                 }
                             }
                         }
@@ -55,6 +51,7 @@ public struct DeleteButton: View {
 }
 
 #Preview {
-    DeleteButton(deleteAction: { print("delete") })
+    DeleteButton()
         .padding()
+        .environmentObject(KeyboardActionContext())
 }

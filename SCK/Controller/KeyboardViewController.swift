@@ -24,58 +24,38 @@ class KeyboardViewController: UIInputViewController{
     
     // MARK: - キーボードUIのセットアップ
     private func setup() {
-        // 次のキーボードへ切り替えるためのアクション（地球儀キー）
+        // キーボードビューの生成と埋め込み処理を分離して可読性向上
+        let keyboardView = createKeyboardView()
+        embedKeyboardView(keyboardView)
+    }
+    
+    /// SwiftUIベースのキーボードビューを生成する
+    private func createKeyboardView() -> some View {
         let nextKeyboardAction = #selector(self.handleInputModeList(from:with:))
-        // SwiftUIのキーボードViewを作成し、各種アクションをクロージャで渡す
-        let keyboardView = KeyboardView(
-            needsInputModeSwitchKey: needsInputModeSwitchKey, nextKeyboardAction: nextKeyboardAction,
-            // テキスト入力処理：渡された文字列を現在のカーソル位置に挿入
-            inputTextAction: { [weak self] text in
-                guard let self else { return }
-                KeyboardInputController.insertText(text, proxy: self.textDocumentProxy)
-            },
-            // テキスト削除処理：1文字削除（文字が存在する場合のみ）
-            deleteTextAction: { [weak self] in
-                guard let self else { return }
-                KeyboardInputController.deleteText(proxy: self.textDocumentProxy)
-            },
-            // カーソルを右に移動（次の文字のUTF16長に基づいて移動）
-            moveRightAction: { [weak self] in
-                guard let self = self else { return }
-                KeyboardInputController.moveCursorRight(proxy: self.textDocumentProxy)
-            },
-            // カーソルを左に移動（前の文字のUTF16長に基づいて戻す）
-            moveLeftAction: { [weak self] in
-                guard let self = self else { return }
-                
-                if let before = self.textDocumentProxy.documentContextBeforeInput,
-                   !before.isEmpty {
-                    let offset = -before.suffix(1).utf16.count
-                    self.textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
-                } else {
-                    // 文頭のさらに外：1文字分戻す
-                    self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-                }
-            }
-        )
-        
-        // MARK: - SwiftUIのViewをUIKitのキーボードに組み込む
 
-        // KeyboardView を UIHostingController でラップし、背景を透明に設定
-        let hostingController = UIHostingController(rootView: keyboardView.BackgroundColor(.clear))
+        return KeyboardView(
+            needsInputModeSwitchKey: needsInputModeSwitchKey,
+            nextKeyboardAction: nextKeyboardAction
+        )
+        .BackgroundColor(.clear) // 背景を透明に設定
+    }
+    
+    /// SwiftUIキーボードビューをUIKitのビュー階層に組み込む
+    private func embedKeyboardView<V: View>(_ view: V) {
+        let hostingController = UIHostingController(rootView: view)
         
-        // ViewController に HostingController を追加し、ビュー階層に組み込む
+        // HostingController を子ViewControllerとして追加
         self.addChild(hostingController)
         self.view.addSubview(hostingController.view)
         hostingController.didMove(toParent: self)
         
-        // Auto Layout制約でHostingControllerのViewを画面全体にフィットさせる
+        // Auto Layout 制約でフルスクリーンにフィット
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            hostingController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
-            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
-            hostingController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
-            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            hostingController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            hostingController.view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            hostingController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
 }

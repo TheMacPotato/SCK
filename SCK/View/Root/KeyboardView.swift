@@ -14,62 +14,35 @@ struct KeyboardView: View {
     // 外部から渡されるパラメータ
     let needsInputModeSwitchKey: Bool       // 地球儀キーが必要かどうか
     let nextKeyboardAction: Selector        // 次のキーボードに切り替えるためのアクション
-    let inputTextAction: (String) -> Void   // 入力処理
-    let deleteTextAction: () -> Void        // 削除処理
-    let moveRightAction: () -> Void         // カーソルを右へ移動
-    let moveLeftAction: () -> Void          // カーソルを左へ移動
     
-    @State private var keyboardMode: KeyboardMode = .default   // 現在のキーボードモード
+    @EnvironmentObject var keyboardMode: KeyboardMode
     @StateObject private var shift = ShiftState()              // Shift状態の保持（大文字小文字）
+    
+    @EnvironmentObject var actionContext: KeyboardActionContext // 各種入力アクション（テキスト挿入・削除・カーソル移動など）をまとめた共有オブジェクト
     
     var body: some View {
         
         VStack{
             // 現在のキーボードモードに応じて適切なサブキーボードを表示
-            switch keyboardMode {
+            switch keyboardMode.current {
             case .default:
-                DefaultKeyboardView(
-                    keyAction: keyAction(key:),
-                    bracketAction: bracketAction(key:),
-                    inputTextAction: inputTextAction,
-                    deleteAction: deleteTextAction
-                )
+                DefaultKeyboardView()
                 .environmentObject(shift)
 
             case .superscript:
-                SuperscriptKeyboardView(
-                    keyAction: keyAction(key:),
-                    bracketAction: bracketAction(key:),
-                    inputTextAction: inputTextAction,
-                    deleteAction: deleteTextAction
-                )
+                SuperscriptKeyboardView()
                 .environmentObject(shift)
 
             case .subscriptMode:
-                SubscriptKeyboardView(
-                    keyAction: keyAction(key:),
-                    bracketAction: bracketAction(key:),
-                    inputTextAction: inputTextAction,
-                    deleteAction: deleteTextAction
-                )
+                SubscriptKeyboardView()
                 .environmentObject(shift)
 
             case .greek:
-                GreekKeyboardView(
-                    keyAction: keyAction(key:),
-                    bracketAction: bracketAction(key:),
-                    inputTextAction: inputTextAction,
-                    deleteAction: deleteTextAction
-                )
+                GreekKeyboardView()
                 .environmentObject(shift)
 
             case .math:
-                MathKeyboardView(
-                    keyAction: keyAction(key:),
-                    bracketAction: bracketAction(key:),
-                    inputTextAction: inputTextAction,
-                    deleteAction: deleteTextAction
-                )
+                MathKeyboardView()
                 .environmentObject(shift)
             }
             // 下部のツールバー（モード切替ボタン、スペース、カーソル移動など）
@@ -84,25 +57,25 @@ struct KeyboardView: View {
                 }
 
                 // キーボードモード切り替えボタン群（現在のモードは灰色背景）
-                KeyboardModeButton(mode: .default, currentMode: keyboardMode, setMode: { keyboardMode = $0 }) {
+                KeyboardModeButton(mode: .default, currentMode: keyboardMode.current, setMode: { keyboardMode.current = $0 }) {
                     AnyView(Image(systemName: "character"))
                 }
-                KeyboardModeButton(mode: .subscriptMode, currentMode: keyboardMode, setMode: { keyboardMode = $0 }) {
+                KeyboardModeButton(mode: .subscriptMode, currentMode: keyboardMode.current, setMode: { keyboardMode.current = $0 }) {
                     AnyView(Image(systemName: "textformat.subscript"))
                 }
-                KeyboardModeButton(mode: .superscript, currentMode: keyboardMode, setMode: { keyboardMode = $0 }) {
+                KeyboardModeButton(mode: .superscript, currentMode: keyboardMode.current, setMode: { keyboardMode.current = $0 }) {
                     AnyView(Image(systemName: "textformat.superscript"))
                 }
-                KeyboardModeButton(mode: .greek, currentMode: keyboardMode, setMode: { keyboardMode = $0 }) {
+                KeyboardModeButton(mode: .greek, currentMode: keyboardMode.current, setMode: { keyboardMode.current = $0 }) {
                     AnyView(Text("θ"))
                 }
-                KeyboardModeButton(mode: .math, currentMode: keyboardMode, setMode: { keyboardMode = $0 }) {
+                KeyboardModeButton(mode: .math, currentMode: keyboardMode.current, setMode: { keyboardMode.current = $0 }) {
                     AnyView(Text("∫"))
                 }
 
                 // カーソル移動・スペース・改行などの操作ボタン
                 Button(){
-                    moveLeftAction()
+                    actionContext.moveCursorLeft()
                 } label: {
                     Image(systemName: "chevron.backward")
                         .frame(width: 30, height: 30)
@@ -111,7 +84,7 @@ struct KeyboardView: View {
                 }
 
                 Button {
-                    inputTextAction(" ")
+                    actionContext.insert(" ")
                 } label: {
                     Image(systemName: "space")
                         .frame(width: 30, height: 30)
@@ -120,7 +93,7 @@ struct KeyboardView: View {
                 }
 
                 Button(){
-                    moveRightAction()
+                    actionContext.moveCursorRight()
                 } label: {
                     Image(systemName: "chevron.forward")
                         .frame(width: 30, height: 30)
@@ -129,7 +102,7 @@ struct KeyboardView: View {
                 }
 
                 Button(){
-                    inputTextAction("\n")
+                    actionContext.insert("\n")
                 } label: {
                     Image(systemName: "return.left")
                         .frame(width: 35, height: 30)
@@ -142,130 +115,25 @@ struct KeyboardView: View {
         .foregroundColor(Color.white)
         .frame(height: 300)
     }
-
-    
-    // MARK: - 入力文字の変換処理（Shiftとモードに応じて切替）
-    func inputTextChange(alphabet: String) -> String {
-        switch keyboardMode {
-        case .greek:
-            // ギリシャ文字は小文字 / 大文字テーブルで変換
-            if shift.state == .off {
-                return greekKeys[alphabet] ?? alphabet
-            } else {
-                return greekShiftKeys[alphabet] ?? alphabet
-            }
-        case .math:
-            // 数学モードではアルファベットはそのまま
-            return alphabet
-        default:
-            // 通常・上付き・下付きでは Shift ON で大文字、OFF で小文字
-            return shift.state == .off ? alphabet : alphabet.uppercased()
-        }
-    }
-    
-    
-    // MARK: - 通常キー入力アクション（モードごとに処理を切り替え）
-    func keyAction(key : String){
-        switch keyboardMode {
-        case .default:
-            if shift.state == .off, let char = defaultKeys[key] {
-                inputTextAction(char)
-            } else if let char = defaultShiftKeys[key] {
-                inputTextAction(char)
-            }
-        case .subscriptMode:
-            if shift.state == .off, let char = subScriptKeys[key] {
-                inputTextAction(char)
-            } else if let char = subScriptShiftKeys[key] {
-                inputTextAction(char)
-            }
-        case .superscript:
-            if shift.state == .off, let char = superScriptKeys[key] {
-                inputTextAction(char)
-            } else if let char = superScriptShiftKeys[key] {
-                inputTextAction(char)
-            }
-        case .greek:
-            if shift.state == .off, let char = greekKeys[key] {
-                inputTextAction(char)
-            } else if let char = greekShiftKeys[key] {
-                inputTextAction(char)
-            }
-        case .math:
-            if shift.state == .off, let char = defaultKeys[key] {
-                inputTextAction(char)
-            } else if let char = defaultShiftKeys[key] {
-                inputTextAction(char)
-            }
-        }
-    }
-    // MARK: - 括弧などの入力後にカーソルを戻す処理
-    func bracketAction(key : String){
-        switch keyboardMode {
-        case .default:
-            if shift.state == .off, let char = defaultKeys[key] {
-                inputTextAction(char)
-                moveLeftAction()
-            } else if let char = defaultShiftKeys[key] {
-                inputTextAction(char)
-                moveLeftAction()
-            }
-        case .subscriptMode:
-            if shift.state == .off, let char = subScriptKeys[key] {
-                inputTextAction(char)
-                moveLeftAction()
-            } else if let char = subScriptShiftKeys[key] {
-                inputTextAction(char)
-                moveLeftAction()
-            }
-        case .superscript:
-            if shift.state == .off, let char = superScriptKeys[key] {
-                inputTextAction(char)
-                moveLeftAction()
-            } else if let char = superScriptShiftKeys[key] {
-                inputTextAction(char)
-                moveLeftAction()
-            }
-        case .greek:
-            if shift.state == .off, let char = greekKeys[key] {
-                inputTextAction(char)
-                moveLeftAction()
-            } else if let char = greekShiftKeys[key] {
-                inputTextAction(char)
-                moveLeftAction()
-            }
-        case .math:
-            if shift.state == .off, let char = defaultKeys[key] {
-                inputTextAction(char)
-                moveLeftAction()
-            } else if let char = defaultShiftKeys[key] {
-                inputTextAction(char)
-                moveLeftAction()
-            }
-        }
-    }
 }
 
 struct KeyboardView_Previews: PreviewProvider {
     static var previews: some View {
         KeyboardView(
             needsInputModeSwitchKey: true,
-            nextKeyboardAction: Selector(("dummy")),
-            inputTextAction: { _ in },
-            deleteTextAction: {},
-            moveRightAction: {},
-            moveLeftAction: {}
+            nextKeyboardAction: Selector(("dummy"))
         )
         .environmentObject(ShiftState())
+        .environmentObject(KeyboardMode())
         .previewLayout(.sizeThatFits)
     }
 }
 
 
 private struct KeyboardModeButton: View {
-    let mode: KeyboardMode
-    let currentMode: KeyboardMode
-    let setMode: (KeyboardMode) -> Void
+    let mode: KeyboardMode.Mode
+    let currentMode: KeyboardMode.Mode
+    let setMode: (KeyboardMode.Mode) -> Void
     let content: () -> AnyView
 
     var body: some View {
