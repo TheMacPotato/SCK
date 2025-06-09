@@ -96,6 +96,11 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		CED322C52DF2EBCA007D95A8 /* Utility */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Utility;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +124,7 @@
 				CED322A72DF1569E007D95A8 /* Controller */,
 				CED322AB2DF156C6007D95A8 /* View */,
 				CED322B02DF1571E007D95A8 /* Extension */,
+				CED322C52DF2EBCA007D95A8 /* Utility */,
 				CE8ECF0B2A72512F003060D8 /* Assets.xcassets */,
 				CE9202082A57A9C500A6F44D /* Info.plist */,
 			);
@@ -182,6 +188,7 @@
 				CED322A92DF156B0007D95A8 /* Model */,
 				CED322AB2DF156C6007D95A8 /* View */,
 				CED322B02DF1571E007D95A8 /* Extension */,
+				CED322C52DF2EBCA007D95A8 /* Utility */,
 			);
 			name = SCK;
 			productName = SCK;
@@ -207,6 +214,7 @@
 				CED322A92DF156B0007D95A8 /* Model */,
 				CED322AB2DF156C6007D95A8 /* View */,
 				CED322B02DF1571E007D95A8 /* Extension */,
+				CED322C52DF2EBCA007D95A8 /* Utility */,
 			);
 			name = ScienceCustomKeyboard;
 			productName = ScienceCustomKeyboard;

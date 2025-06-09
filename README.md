@@ -1,14 +1,17 @@
 # ScienceCustomKeyboard リポジトリ
 
-このリポジトリは、iOS 向けの **カスタムキーボード拡張**「SCK」と、その導入手順を案内する **ホストアプリ** から構成されています。プロジェクト全体は `ScienceCustomKeyboard.xcodeproj` で管理されています。
+
+このリポジトリは、iOS 向けの **カスタムキーボード拡張** と、その導入手順を示す **ホストアプリ** の 2 つのモジュールで構成されています。Xcode プロジェクトは `ScienceCustomKeyboard.xcodeproj` に含まれています。
 
 - `SCK/` — キーボード拡張のソースコード
 - `ScienceCustomKeyboard/` — ホストアプリのソースコード
 
-以下ではディレクトリ構成と主要ファイルの役割、ビルド方法などをまとめます。
+
+以下ではディレクトリ構成や主要なファイル、各コンポーネントの使い方を説明します。
 
 ## ディレクトリ構成
-```text
+
+```
 SCK/
 ├── Controller/
 │   └── KeyboardViewController.swift
