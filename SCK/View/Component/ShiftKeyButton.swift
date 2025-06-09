@@ -21,8 +21,8 @@ struct ShiftKeyButton: View {
         } label: {
             Image(systemName: "shift")  // SF Symbols の Shiftアイコン
                 .frame(width: 44, height: 40)                           // キーサイズ
-                .foregroundColor(shift.state == .on ? .white : .black)  // 文字色（on:白, off:黒）
-                .background(shift.state == .on ? .gray : .clear)        // 背景（on:灰色, off:透明）
+                .foregroundColor(.white)                                // 文字色
+                .background(Color.gray)                                 // 背景
                 .clipShape(RoundedRectangle(cornerRadius: 8))           // 角丸ボタン
         }
     }

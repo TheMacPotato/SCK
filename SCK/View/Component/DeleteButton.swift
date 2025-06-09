@@ -9,8 +9,6 @@ import SwiftUI
 
 public struct DeleteButton: View {
     public let deleteAction: () -> Void
-    @Environment(\.colorScheme) private var colorScheme
-
     @State private var deleteTimer: Timer?
     @State private var isPressing = false
 
@@ -24,8 +22,8 @@ public struct DeleteButton: View {
         }) {
             Image(systemName: "delete.left")
                 .frame(width: 44, height: 40)
-                .foregroundColor(colorScheme == .dark ? .white : .black)
-                .background(isPressing ? Color.gray.opacity(0.3) : (colorScheme == .dark ? Color.black : Color.white))
+                .foregroundColor(.white)
+                .background(Color.gray)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
         }
         .simultaneousGesture(
