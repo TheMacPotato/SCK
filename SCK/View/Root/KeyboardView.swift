@@ -79,89 +79,25 @@ struct KeyboardView: View {
                     NextKeyboardButton(systemName: "globe",
                                        action: nextKeyboardAction)
                     .frame(width: 25, height: 30)
-                    .background(Color.gray)
+                    .background(Color(uiColor: .darkGray))
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
                 // キーボードモード切り替えボタン群（現在のモードは灰色背景）
-                Button(){
-                    keyboardMode = .default
-                } label: {
-                    if keyboardMode == .default {
-                        Image(systemName: "character")
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(Color.white)
-                            .background(Color.gray)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    } else {
-                        Image(systemName: "character")
-                            .frame(width: 30, height: 30)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    }
+                KeyboardModeButton(mode: .default, currentMode: keyboardMode, setMode: { keyboardMode = $0 }) {
+                    AnyView(Image(systemName: "character"))
                 }
-
-                Button(){
-                    keyboardMode = .subscriptMode
-                } label: {
-                    if keyboardMode == .subscriptMode {
-                        Image(systemName: "textformat.subscript")
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(Color.white)
-                            .background(Color.gray)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    } else {
-                        Image(systemName: "textformat.subscript")
-                            .frame(width: 30, height: 30)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    }
+                KeyboardModeButton(mode: .subscriptMode, currentMode: keyboardMode, setMode: { keyboardMode = $0 }) {
+                    AnyView(Image(systemName: "textformat.subscript"))
                 }
-
-                Button(){
-                    keyboardMode = .superscript
-                } label: {
-                    if keyboardMode == .superscript {
-                        Image(systemName: "textformat.superscript")
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(Color.white)
-                            .background(Color.gray)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    } else {
-                        Image(systemName: "textformat.superscript")
-                            .frame(width: 30, height: 30)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    }
+                KeyboardModeButton(mode: .superscript, currentMode: keyboardMode, setMode: { keyboardMode = $0 }) {
+                    AnyView(Image(systemName: "textformat.superscript"))
                 }
-
-                Button(){
-                    keyboardMode = .greek
-                } label: {
-                    if keyboardMode == .greek {
-                        Text("θ")
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(Color.white)
-                            .background(Color.gray)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    } else {
-                        Text("θ")
-                            .frame(width: 30, height: 30)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    }
+                KeyboardModeButton(mode: .greek, currentMode: keyboardMode, setMode: { keyboardMode = $0 }) {
+                    AnyView(Text("θ"))
                 }
-
-                Button(){
-                    keyboardMode = .math
-                } label: {
-                    if keyboardMode == .math {
-                        Text("∫")
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(Color.white)
-                            .background(Color.gray)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    } else {
-                        Text("∫")
-                            .frame(width: 30, height: 30)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                    }
+                KeyboardModeButton(mode: .math, currentMode: keyboardMode, setMode: { keyboardMode = $0 }) {
+                    AnyView(Text("∫"))
                 }
 
                 // カーソル移動・スペース・改行などの操作ボタン
@@ -170,7 +106,7 @@ struct KeyboardView: View {
                 } label: {
                     Image(systemName: "chevron.backward")
                         .frame(width: 30, height: 30)
-                        .background(Color.gray)
+                        .background(Color(uiColor: .darkGray))
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
@@ -188,7 +124,7 @@ struct KeyboardView: View {
                 } label: {
                     Image(systemName: "chevron.forward")
                         .frame(width: 30, height: 30)
-                        .background(Color.gray)
+                        .background(Color(uiColor: .darkGray))
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
@@ -198,7 +134,7 @@ struct KeyboardView: View {
                     Image(systemName: "return.left")
                         .frame(width: 35, height: 30)
                         .foregroundColor(Color.white)
-                        .background(Color.gray)
+                        .background(Color.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
             }
@@ -325,3 +261,22 @@ struct KeyboardView_Previews: PreviewProvider {
     }
 }
 
+
+private struct KeyboardModeButton: View {
+    let mode: KeyboardMode
+    let currentMode: KeyboardMode
+    let setMode: (KeyboardMode) -> Void
+    let content: () -> AnyView
+
+    var body: some View {
+        Button {
+            setMode(mode)
+        } label: {
+            content()
+                .frame(width: 30, height: 30)
+                .foregroundColor(mode == currentMode ? Color.white : Color.primary)
+                .background(mode == currentMode ? Color(uiColor: .darkGray) : Color.clear)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+        }
+    }
+}

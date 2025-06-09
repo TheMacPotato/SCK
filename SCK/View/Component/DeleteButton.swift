@@ -23,7 +23,7 @@ public struct DeleteButton: View {
             Image(systemName: "delete.left")
                 .frame(width: 44, height: 40)
                 .foregroundColor(.white)
-                .background(Color.gray)
+                .background(Color(uiColor: .darkGray))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
         }
         .simultaneousGesture(
