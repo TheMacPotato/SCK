@@ -31,63 +31,63 @@ struct KeyboardView_old: View {
                     
                     // Input Text
                     Button {
-                        keyAction(key: "1")
+                        keyAction_old(key: "1")
                     } label: {
-                        keyDisplay(keyString: "1")
+                        keyDisplay_old(keyString: "1")
                     }
                     
                     Button {
-                        keyAction(key: "2")
+                        keyAction_old(key: "2")
                     } label: {
-                        keyDisplay(keyString: "2")
+                        keyDisplay_old(keyString: "2")
                     }
                     
                     Button {
-                        keyAction(key: "3")
+                        keyAction_old(key: "3")
                     } label: {
-                        keyDisplay(keyString: "3")
+                        keyDisplay_old(keyString: "3")
                     }
                     
                     Button {
-                        keyAction(key: "4")
+                        keyAction_old(key: "4")
                     } label: {
-                        keyDisplay(keyString: "4")
+                        keyDisplay_old(keyString: "4")
                     }
                     
                     Button {
-                        keyAction(key: "5")
+                        keyAction_old(key: "5")
                     } label: {
-                        keyDisplay(keyString: "5")
+                        keyDisplay_old(keyString: "5")
                     }
                     
                     Button {
-                        keyAction(key: "6")
+                        keyAction_old(key: "6")
                     } label: {
-                        keyDisplay(keyString: "6")
+                        keyDisplay_old(keyString: "6")
                     }
                     
                     Button {
-                        keyAction(key: "7")
+                        keyAction_old(key: "7")
                     } label: {
-                        keyDisplay(keyString: "7")
+                        keyDisplay_old(keyString: "7")
                     }
                     
                     Button {
-                        keyAction(key: "8")
+                        keyAction_old(key: "8")
                     } label: {
-                        keyDisplay(keyString: "8")
+                        keyDisplay_old(keyString: "8")
                     }
                     
                     Button {
-                        keyAction(key: "9")
+                        keyAction_old(key: "9")
                     } label: {
-                        keyDisplay(keyString: "9")
+                        keyDisplay_old(keyString: "9")
                     }
                     
                     Button {
-                        keyAction(key: "0")
+                        keyAction_old(key: "0")
                     } label: {
-                        keyDisplay(keyString: "0")
+                        keyDisplay_old(keyString: "0")
                     }
                 }
                 .background(Color(uiColor: .systemBackground))
@@ -97,57 +97,57 @@ struct KeyboardView_old: View {
             HStack{
                 Group {
                     Button {
-                        keyAction(key: "+")
+                        keyAction_old(key: "+")
                     } label: {
-                        keyDisplay(keyString: "+")
+                        keyDisplay_old(keyString: "+")
                     }
                     
                     Button {
-                        keyAction(key: "-")
+                        keyAction_old(key: "-")
                     } label: {
-                        keyDisplay(keyString: "-")
+                        keyDisplay_old(keyString: "-")
                     }
                     
                     Button {
-                        keyAction(key: "×")
+                        keyAction_old(key: "×")
                     } label: {
-                        keyDisplay(keyString: "×")
+                        keyDisplay_old(keyString: "×")
                     }
                     
                     Button {
-                        keyAction(key: "÷")
+                        keyAction_old(key: "÷")
                     } label: {
-                        keyDisplay(keyString: "÷")
+                        keyDisplay_old(keyString: "÷")
                     }
                     
                     Button {
-                        keyAction(key: "=")
+                        keyAction_old(key: "=")
                     } label: {
-                        keyDisplay(keyString:"=")
+                        keyDisplay_old(keyString:"=")
                     }
                     
                     Button {
-                        keyAction(key: "⇔")
+                        keyAction_old(key: "⇔")
                     } label: {
-                        keyDisplay(keyString:"⇔")
+                        keyDisplay_old(keyString:"⇔")
                     }
                     
                     Button {
-                        bracketAction(key: "()")
+                        bracketAction_old(key: "()")
                     } label: {
-                        keyDisplay(keyString: "( )")
+                        keyDisplay_old(keyString: "( )")
                     }
                     
                     Button {
-                        bracketAction(key: "{}")
+                        bracketAction_old(key: "{}")
                     } label: {
-                        keyDisplay(keyString: "{ }")
+                        keyDisplay_old(keyString: "{ }")
                     }
                     
                     Button {
-                        bracketAction(key: "[]")
+                        bracketAction_old(key: "[]")
                     } label: {
-                        keyDisplay(keyString: "[ ]")
+                        keyDisplay_old(keyString: "[ ]")
                     }
                     
                     Button {
@@ -165,54 +165,54 @@ struct KeyboardView_old: View {
                 Group {
                     if keyboardMode != .math {
                         Button {
-                            keyAction(key: "q")
+                            keyAction_old(key: "q")
                         } label: {
-                            keyDisplay(keyString: "q")
+                            keyDisplay_old(keyString: "q")
                         }
                         Button {
-                            keyAction(key: "w")
+                            keyAction_old(key: "w")
                         } label: {
-                            keyDisplay(keyString: "w")
+                            keyDisplay_old(keyString: "w")
                         }
                         Button {
-                            keyAction(key: "e")
+                            keyAction_old(key: "e")
                         } label: {
-                            keyDisplay(keyString: "e")
+                            keyDisplay_old(keyString: "e")
                         }
                         Button {
-                            keyAction(key: "r")
+                            keyAction_old(key: "r")
                         } label: {
-                            keyDisplay(keyString: "r")
+                            keyDisplay_old(keyString: "r")
                         }
                         Button {
-                            keyAction(key: "t")
+                            keyAction_old(key: "t")
                         } label: {
-                            keyDisplay(keyString: "t")
+                            keyDisplay_old(keyString: "t")
                         }
                         Button {
-                            keyAction(key: "y")
+                            keyAction_old(key: "y")
                         } label: {
-                            keyDisplay(keyString: "y")
+                            keyDisplay_old(keyString: "y")
                         }
                         Button {
-                            keyAction(key: "u")
+                            keyAction_old(key: "u")
                         } label: {
-                            keyDisplay(keyString: "u")
+                            keyDisplay_old(keyString: "u")
                         }
                         Button {
-                            keyAction(key: "i")
+                            keyAction_old(key: "i")
                         } label: {
-                            keyDisplay(keyString: "i")
+                            keyDisplay_old(keyString: "i")
                         }
                         Button {
-                            keyAction(key: "o")
+                            keyAction_old(key: "o")
                         } label: {
-                            keyDisplay(keyString: "o")
+                            keyDisplay_old(keyString: "o")
                         }
                         Button {
-                            keyAction(key: "p")
+                            keyAction_old(key: "p")
                         } label: {
-                            keyDisplay(keyString: "p")
+                            keyDisplay_old(keyString: "p")
                         }
                     } else if keyboardMode == .math {
                         Button {
@@ -286,49 +286,49 @@ struct KeyboardView_old: View {
                 Group {
                     if keyboardMode != .math {
                         Button {
-                            keyAction(key: "a")
+                            keyAction_old(key: "a")
                         } label: {
-                            keyDisplay(keyString: "a")
+                            keyDisplay_old(keyString: "a")
                         }
                         Button {
-                            keyAction(key: "s")
+                            keyAction_old(key: "s")
                         } label: {
-                            keyDisplay(keyString: "s")
+                            keyDisplay_old(keyString: "s")
                         }
                         Button {
-                            keyAction(key: "d")
+                            keyAction_old(key: "d")
                         } label: {
-                            keyDisplay(keyString: "d")
+                            keyDisplay_old(keyString: "d")
                         }
                         Button {
-                            keyAction(key: "f")
+                            keyAction_old(key: "f")
                         } label: {
-                            keyDisplay(keyString: "f")
+                            keyDisplay_old(keyString: "f")
                         }
                         Button {
-                            keyAction(key: "g")
+                            keyAction_old(key: "g")
                         } label: {
-                            keyDisplay(keyString: "g")
+                            keyDisplay_old(keyString: "g")
                         }
                         Button {
-                            keyAction(key: "h")
+                            keyAction_old(key: "h")
                         } label: {
-                            keyDisplay(keyString: "h")
+                            keyDisplay_old(keyString: "h")
                         }
                         Button {
-                            keyAction(key: "j")
+                            keyAction_old(key: "j")
                         } label: {
-                            keyDisplay(keyString: "j")
+                            keyDisplay_old(keyString: "j")
                         }
                         Button {
-                            keyAction(key: "k")
+                            keyAction_old(key: "k")
                         } label: {
-                            keyDisplay(keyString: "k")
+                            keyDisplay_old(keyString: "k")
                         }
                         Button {
-                            keyAction(key: "l")
+                            keyAction_old(key: "l")
                         } label: {
-                            keyDisplay(keyString: "l")
+                            keyDisplay_old(keyString: "l")
                         }
                             
                     } else if keyboardMode == .math {
@@ -419,39 +419,39 @@ struct KeyboardView_old: View {
                     }
                     if keyboardMode != .math {
                         Button {
-                            keyAction(key: "z")
+                            keyAction_old(key: "z")
                         } label: {
-                            keyDisplay(keyString: "z")
+                            keyDisplay_old(keyString: "z")
                         }
                         Button {
-                            keyAction(key: "x")
+                            keyAction_old(key: "x")
                         } label: {
-                            keyDisplay(keyString: "x")
+                            keyDisplay_old(keyString: "x")
                         }
                         Button {
-                            keyAction(key: "c")
+                            keyAction_old(key: "c")
                         } label: {
-                            keyDisplay(keyString: "c")
+                            keyDisplay_old(keyString: "c")
                         }
                         Button {
-                            keyAction(key: "v")
+                            keyAction_old(key: "v")
                         } label: {
-                            keyDisplay(keyString: "v")
+                            keyDisplay_old(keyString: "v")
                         }
                         Button {
-                            keyAction(key: "b")
+                            keyAction_old(key: "b")
                         } label: {
-                            keyDisplay(keyString: "b")
+                            keyDisplay_old(keyString: "b")
                         }
                         Button {
-                            keyAction(key: "n")
+                            keyAction_old(key: "n")
                         } label: {
-                            keyDisplay(keyString: "n")
+                            keyDisplay_old(keyString: "n")
                         }
                         Button {
-                            keyAction(key: "m")
+                            keyAction_old(key: "m")
                         } label: {
-                            keyDisplay(keyString: "m")
+                            keyDisplay_old(keyString: "m")
                         }
                     } else if keyboardMode == .math {
                         Button {
@@ -651,7 +651,7 @@ struct KeyboardView_old: View {
         .frame(height: 300)
     }
     
-    func keyDisplay(keyString : String) -> some View {
+    func keyDisplay_old(keyString : String) -> some View {
         switch keyboardMode {
         case .default:
             if shiftSwitch == 0 {
@@ -733,7 +733,7 @@ struct KeyboardView_old: View {
         }
     }
     
-    func inputTextChange(alphabet : String) -> String {
+    func inputTextChange_old(alphabet : String) -> String {
         if keyboardMode == .greek && shiftSwitch == 0{
             return greekKeys[alphabet]!
         } else if keyboardMode != .greek && keyboardMode != .math {
@@ -748,7 +748,7 @@ struct KeyboardView_old: View {
         }
     }
     
-    func keyAction(key : String){
+    func keyAction_old(key : String){
         switch keyboardMode {
         case .default:
             if shiftSwitch == 0 && defaultKeys [key] != nil {
@@ -783,7 +783,7 @@ struct KeyboardView_old: View {
         }
     }
     
-    func bracketAction(key : String){
+    func bracketAction_old(key : String){
         switch keyboardMode {
         case .default:
             if shiftSwitch == 0 && defaultKeys [key] != nil {

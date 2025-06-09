@@ -25,4 +25,8 @@ final class ShiftState: ObservableObject {
     func toggle() {
         state = (state == .off ? .on : .off)
     }
+    
+    func isOn() -> Bool {
+        state == .on
+    }
 }

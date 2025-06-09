@@ -32,32 +32,17 @@ class KeyboardViewController: UIInputViewController{
             // テキスト入力処理：渡された文字列を現在のカーソル位置に挿入
             inputTextAction: { [weak self] text in
                 guard let self else { return }
-                self.textDocumentProxy.insertText(text)
+                KeyboardInputController.insertText(text, proxy: self.textDocumentProxy)
             },
             // テキスト削除処理：1文字削除（文字が存在する場合のみ）
             deleteTextAction: { [weak self] in
-                guard let self,
-                      self.textDocumentProxy.hasText else { return }
-                
-                self.textDocumentProxy.deleteBackward()
+                guard let self else { return }
+                KeyboardInputController.deleteText(proxy: self.textDocumentProxy)
             },
             // カーソルを右に移動（次の文字のUTF16長に基づいて移動）
             moveRightAction: { [weak self] in
                 guard let self = self else { return }
-                
-                if let after = self.textDocumentProxy.documentContextAfterInput {
-                    if after.isEmpty {
-                        // 末尾にカーソルがある場合：1文字分右へ
-                        self.textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
-                    } else {
-                        // 次の1文字のUTF16長だけカーソルを進める
-                        let offset = after.prefix(1).utf16.count
-                        self.textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
-                    }
-                } else {
-                    // 文末のさらに外：1文字分進める
-                    self.textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
-                }
+                KeyboardInputController.moveCursorRight(proxy: self.textDocumentProxy)
             },
             // カーソルを左に移動（前の文字のUTF16長に基づいて戻す）
             moveLeftAction: { [weak self] in
