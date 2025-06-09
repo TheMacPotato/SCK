@@ -13,6 +13,13 @@ struct VideoPlayerView: UIViewControllerRepresentable {
     }
 
     func makeUIViewController(context: Context) -> AVPlayerViewController {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.ambient, options: [.mixWithOthers])
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("音声セッションの設定に失敗しました: \(error)")
+        }
+        
         let playerViewController = AVPlayerViewController()
         let player = AVQueuePlayer()
         let playerItem = AVPlayerItem(url: videoURL)
