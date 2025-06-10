@@ -1,5 +1,14 @@
 # ScienceCustomKeyboard リポジトリ
 
+## Overview (English)
+
+This repository contains the source for an iOS **custom keyboard extension** and a
+simple host application that demonstrates how to enable it. The Xcode project is
+provided in `ScienceCustomKeyboard.xcodeproj`.
+
+* `SCK/` — keyboard extension sources
+* `ScienceCustomKeyboard/` — host application sources
+
 
 このリポジトリは、iOS 向けの **カスタムキーボード拡張** と、その導入手順を示す **ホストアプリ** の 2 つのモジュールで構成されています。Xcode プロジェクトは `ScienceCustomKeyboard.xcodeproj` に含まれています。
 
@@ -14,13 +23,17 @@
 ```
 SCK/
 ├── Controller/
+│   ├── KeyboardInputController.swift
 │   └── KeyboardViewController.swift
 ├── Extension/
 │   └── View+BackgroundColor.swift
 ├── Model/
+│   ├── InputKeyMapper.swift
+│   ├── KeyboardActions.swift
 │   ├── KeyboardMode.swift
-│   ├── ShiftState.swift
-│   └── KeyboardDisplayManager.swift  # 予備ファイル（現状は未使用）
+│   └── ShiftState.swift
+├── ViewModel/
+│   └── KeyboardActionContext.swift
 ├── View/
 │   ├── Component/
 │   │   ├── DeleteButton.swift
@@ -35,14 +48,59 @@ SCK/
 │   │   ├── SubscriptKeyboardView.swift
 │   │   └── SuperscriptKeyboardView.swift
 │   └── Root/
-│       ├── KeyboardView.swift
-│       └── KeyboardView_old.swift  # 旧バージョンの参考実装
+│       └── KeyboardView.swift
+└── Info.plist
 ScienceCustomKeyboard/
+├── Assets.xcassets/
 ├── ContentView.swift
 ├── VideoPlayerView.swift
 ├── ScienceCustomKeyboardApp.swift
+├── Info.plist
 └── HowTo.mp4
+ScienceCustomKeyboard.xcodeproj/
+
 ```
+## 各ファイルの概要
+
+### SCK/Controller
+- `KeyboardInputController.swift`
+  - `insertText(_:proxy:)` 文字列を挿入
+  - `deleteText(proxy:)` 1文字削除
+  - `moveCursorLeft(proxy:)` カーソル左移動
+  - `moveCursorRight(proxy:)` カーソル右移動
+- `KeyboardViewController.swift`
+  - `viewDidLoad()` 初期設定
+  - `createKeyboardView()` SwiftUIキーボード生成
+  - `embedKeyboardView(_:)` UIKitへ組み込み
+
+### SCK/Extension
+- `View+BackgroundColor.swift`
+  - `BackgroundColor(_:)` 背景色を指定
+  - `BackgroundColorView` UIKitビューで背景色適用
+
+### SCK/Model
+- `InputKeyMapper.swift` 各モードのキー対応表
+- `KeyboardActions.swift` キー配列を返すヘルパ
+  - `keyDictionary` 現在モードのマッピング
+  - `key(for:)` キーから文字を取得
+- `KeyboardMode.swift` 表示モード管理
+- `ShiftState.swift` Shift状態を保持し `toggle()` で切替
+
+### SCK/ViewModel
+- `KeyboardActionContext.swift` テキスト挿入や削除などの共通処理を提供
+  - `insert(_:)`, `delete()`, `moveCursorLeft()`, `moveCursorRight()`, `bracket(_:)`
+
+### SCK/View` ディレクトリ内ビュー
+- `Root/KeyboardView.swift` モードに応じて各キーボードビューを切替
+- `Keyboard/` 配下の各 `*KeyboardView.swift` はそれぞれのレイアウトを定義
+- `Component/` 配下は共通ボタン群 (`ShiftKeyButton`, `DeleteButton` など)
+
+### ScienceCustomKeyboard
+- `ContentView.swift` 使い方説明画面
+- `VideoPlayerView.swift` ループ再生用ビュー
+- `ScienceCustomKeyboardApp.swift` アプリのエントリポイント
+- `Assets.xcassets` / `Info.plist` / `HowTo.mp4` はリソース類
+
 
 ## 主なコンポーネント
 ### KeyboardViewController.swift
@@ -65,7 +123,6 @@ ScienceCustomKeyboard/
 ### モデル
 - `KeyboardMode` — キーボードの表示モードを表す列挙型。
 - `ShiftState` — Shift キーの状態を管理する `ObservableObject`。
-- `KeyboardDisplayManager` — 将来の表示制御のために用意されたプレースホルダです。
 
 ### ホストアプリ
 `ScienceCustomKeyboard` フォルダには、キーボード拡張の導入手順を示すシンプルなアプリが含まれます。`ContentView` で説明用の動画 (`HowTo.mp4`) を再生し、ユーザーに設定方法を案内します。
