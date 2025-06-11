@@ -53,15 +53,44 @@ struct OperatorRow: View {
             
             // 括弧キーは個別に処理（bracketAction）
             ForEach(bracketKeys, id: \.self) { key in
+                let isKeyEnable = KeyboardActions(mode: mode, isShiftOn: false).isValidKey(key)
                 Button { actionContext.bracket(key)} label: {
                     Text(key)
                         .frame(width: 30, height: 40)
-                        .foregroundColor(.white)
-                        .background(Color.gray)
+                        .foregroundColor(isKeyEnable ? Color.white : Color.black)    // 文字色
+                        .background(isKeyEnable ? Color.gray : Color.black.opacity(0.6))         // 背景色
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
-                .padding(10) // タップ範囲を外側に広げる（見た目は変わらない）
             }
+        }
+    }
+}
+
+struct EnterKey: View {
+    @EnvironmentObject var actionContext: KeyboardActionContext
+    
+    var body: some View {
+        Button { actionContext.enter() } label: {
+            Image(systemName: "return")
+                .frame(width: 35, height: 30)
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+        }
+    }
+}
+
+struct SpaceKey: View {
+    @EnvironmentObject var actionContext: KeyboardActionContext
+    
+    var body: some View {
+        Button {
+            actionContext.space()
+        } label: {
+            Image(systemName: "space")
+                .frame(width: 30, height: 30)
+                .background(Color.gray)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
         }
     }
 }

@@ -24,6 +24,16 @@ final class KeyboardActionContext: ObservableObject {
         print("[INSERT] text: \(text), mode: \(keyboardMode.current), shift: \(shift.state)")
         KeyboardInputController.insertText(KeyboardActions(mode: keyboardMode.current, isShiftOn: shift.isOn()).keyDictionary[text] ?? "nope", proxy: proxy)
     }
+    
+    func enter() {
+        guard let proxy = inputProxy else { return }
+        KeyboardInputController.insertText("\n", proxy: proxy)
+    }
+    
+    func space() {
+        guard let proxy = inputProxy else { return }
+        KeyboardInputController.insertText(" ", proxy: proxy)
+    }
 
     func delete() {
         guard let proxy = inputProxy else { return }

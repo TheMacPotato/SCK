@@ -87,14 +87,7 @@ struct KeyboardView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
-                Button {
-                    actionContext.insert(" ")
-                } label: {
-                    Image(systemName: "space")
-                        .frame(width: 30, height: 30)
-                        .background(Color.gray)
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
-                }
+                SpaceKey()
 
                 Button(){
                     actionContext.moveCursorRight()
@@ -104,16 +97,7 @@ struct KeyboardView: View {
                         .background(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
-
-                Button(){
-                    actionContext.insert("\n")
-                } label: {
-                    Image(systemName: "return.left")
-                        .frame(width: 35, height: 30)
-                        .foregroundColor(Color.white)
-                        .background(Color.blue)
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
-                }
+                EnterKey()
             }
         }
         .foregroundColor(Color.white)
