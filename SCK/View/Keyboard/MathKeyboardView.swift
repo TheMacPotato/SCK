@@ -24,7 +24,8 @@ private enum MathCategory: String, CaseIterable, Identifiable {
 /// 数式に必要な特殊記号や演算子、数字などをカテゴリ別に表示
 struct MathKeyboardView: View {
     @EnvironmentObject var shift: ShiftState
-    
+    @EnvironmentObject var actionContext: KeyboardActionContext
+    let thisMode: KeyboardMode.Mode = .math
     // カテゴリ別の行配列
     private let symbols: [MathCategory: [[String]]] = [
         .basic: [
@@ -68,6 +69,7 @@ struct MathKeyboardView: View {
             OperatorRow(
                 opKeys: ["+","-","×","÷","=","±","/"],
                 bracketKeys: ["( )","{ }","[ ]"],
+                mode: thisMode
             )
             
             // MARK: - 選択カテゴリに応じた数学記号行の表示
@@ -77,15 +79,22 @@ struct MathKeyboardView: View {
                     if index == rows.count - 1 {
                         HStack {
                             ShiftKeyButton()
-                            KeyRow(keys: row)
+                            KeyRow(keys: row,
+                                   mode: thisMode,
+                                   isShift: false
+                            )
+                            DeleteButton()
                         }
                     } else {
                         // 通常行は KeyRow で水平表示
-                        KeyRow(keys: row)
+                        KeyRow(keys: row,
+                               mode: thisMode,
+                               isShift: false)
                     }
                 }
             }
         }
+        .environmentObject(actionContext)
     }
 }
 

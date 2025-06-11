@@ -9,23 +9,29 @@ import Foundation
 
 struct KeyboardActions {
     let mode: KeyboardMode.Mode
-    let shiftState: ShiftState
+    let isShiftOn: Bool
 
     var keyDictionary: [String: String] {
         switch mode {
         case .default:
-            return shiftState.isOn() ? defaultShiftKeys : defaultKeys
+            return isShiftOn ? defaultShiftKeys : defaultKeys
         case .subscriptMode:
-            return shiftState.isOn() ? subScriptShiftKeys : subScriptKeys
+            return isShiftOn ? subScriptShiftKeys : subScriptKeys
         case .superscript:
-            return shiftState.isOn() ? superScriptShiftKeys : superScriptKeys
+            return isShiftOn ? superScriptShiftKeys : superScriptKeys
         case .greek:
-            return shiftState.isOn() ? greekShiftKeys : greekKeys
+            return isShiftOn ? greekShiftKeys : greekKeys
         case .math:
             return mathKeys
         }
     }
 
+    func isValidKey(_ key: String) -> Bool {
+        let exists = keyDictionary[key] != nil
+        print("[VALIDATE] key: \(key), mode: \(mode), shift: \(isShiftOn), exists: \(exists)")
+        return exists
+    }
+    
     func key(for key: String) -> String? {
         return keyDictionary[key]
     }

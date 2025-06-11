@@ -15,9 +15,8 @@ struct KeyboardView: View {
     let needsInputModeSwitchKey: Bool       // 地球儀キーが必要かどうか
     let nextKeyboardAction: Selector        // 次のキーボードに切り替えるためのアクション
     
-    @EnvironmentObject var keyboardMode: KeyboardMode
-    @StateObject private var shift = ShiftState()              // Shift状態の保持（大文字小文字）
-    
+    @EnvironmentObject private var shift: ShiftState
+    @EnvironmentObject private var keyboardMode: KeyboardMode
     @EnvironmentObject var actionContext: KeyboardActionContext // 各種入力アクション（テキスト挿入・削除・カーソル移動など）をまとめた共有オブジェクト
     
     var body: some View {
@@ -27,23 +26,28 @@ struct KeyboardView: View {
             switch keyboardMode.current {
             case .default:
                 DefaultKeyboardView()
-                .environmentObject(shift)
+                    .environmentObject(keyboardMode)
+                    .environmentObject(shift)
 
             case .superscript:
                 SuperscriptKeyboardView()
-                .environmentObject(shift)
+                    .environmentObject(keyboardMode)
+                    .environmentObject(shift)
 
             case .subscriptMode:
                 SubscriptKeyboardView()
-                .environmentObject(shift)
+                    .environmentObject(keyboardMode)
+                    .environmentObject(shift)
 
             case .greek:
                 GreekKeyboardView()
-                .environmentObject(shift)
+                    .environmentObject(keyboardMode)
+                    .environmentObject(shift)
 
             case .math:
                 MathKeyboardView()
-                .environmentObject(shift)
+                    .environmentObject(keyboardMode)
+                    .environmentObject(shift)
             }
             // 下部のツールバー（モード切替ボタン、スペース、カーソル移動など）
             HStack{
@@ -52,7 +56,7 @@ struct KeyboardView: View {
                     NextKeyboardButton(systemName: "globe",
                                        action: nextKeyboardAction)
                     .frame(width: 25, height: 30)
-                    .background(Color(uiColor: .darkGray))
+                    .background(.black)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
@@ -79,7 +83,7 @@ struct KeyboardView: View {
                 } label: {
                     Image(systemName: "chevron.backward")
                         .frame(width: 30, height: 30)
-                        .background(Color(uiColor: .darkGray))
+                        .background(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
@@ -97,7 +101,7 @@ struct KeyboardView: View {
                 } label: {
                     Image(systemName: "chevron.forward")
                         .frame(width: 30, height: 30)
-                        .background(Color(uiColor: .darkGray))
+                        .background(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
 
@@ -125,6 +129,7 @@ struct KeyboardView_Previews: PreviewProvider {
         )
         .environmentObject(ShiftState())
         .environmentObject(KeyboardMode())
+        .environmentObject(KeyboardActionContext(shift: ShiftState(), keyboardMode: KeyboardMode()))
         .previewLayout(.sizeThatFits)
     }
 }
@@ -143,7 +148,7 @@ private struct KeyboardModeButton: View {
             content()
                 .frame(width: 30, height: 30)
                 .foregroundColor(mode == currentMode ? Color.white : Color.primary)
-                .background(mode == currentMode ? Color(uiColor: .darkGray) : Color.clear)
+                .background(mode == currentMode ? .black : Color.clear)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
         }
     }

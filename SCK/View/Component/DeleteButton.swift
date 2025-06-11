@@ -19,7 +19,7 @@ public struct DeleteButton: View {
             Image(systemName: "delete.left")
                 .frame(width: 44, height: 40)
                 .foregroundColor(.white)
-                .background(Color(uiColor: .darkGray))
+                .background(.black)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
         }
         .simultaneousGesture(
@@ -53,5 +53,5 @@ public struct DeleteButton: View {
 #Preview {
     DeleteButton()
         .padding()
-        .environmentObject(KeyboardActionContext())
+        .environmentObject(KeyboardActionContext(shift: ShiftState(), keyboardMode: KeyboardMode()))
 }

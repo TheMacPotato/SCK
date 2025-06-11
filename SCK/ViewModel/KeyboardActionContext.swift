@@ -10,15 +10,19 @@ import UIKit
 import SwiftUICore
 
 final class KeyboardActionContext: ObservableObject {
-    var shift = ShiftState()              // Shift状態の保持（大文字小文字
-    @Published var keyboardMode = KeyboardMode()  // キーボードモードの監視
-    
-    
+    @Published var shift: ShiftState              // Shift状態の保持（大文字小文字
+    @Published var keyboardMode: KeyboardMode  // キーボードモードの監視
     var inputProxy: UITextDocumentProxy?
-
+    
+    init(shift: ShiftState, keyboardMode: KeyboardMode) {
+        self.shift = shift
+        self.keyboardMode = keyboardMode
+    }
+    
     func insert(_ text: String) {
         guard let proxy = inputProxy else { return }
-        KeyboardInputController.insertText(text, proxy: proxy)
+        print("[INSERT] text: \(text), mode: \(keyboardMode.current), shift: \(shift.state)")
+        KeyboardInputController.insertText(KeyboardActions(mode: keyboardMode.current, isShiftOn: shift.isOn()).keyDictionary[text] ?? "nope", proxy: proxy)
     }
 
     func delete() {
@@ -36,6 +40,8 @@ final class KeyboardActionContext: ObservableObject {
         KeyboardInputController.moveCursorRight(proxy: proxy)
     }
     func bracket(_ key: String) {
+        guard let proxy = inputProxy else { return }
+        
         let char: String? = {
             switch keyboardMode.current {
             case .default:
@@ -47,12 +53,13 @@ final class KeyboardActionContext: ObservableObject {
             case .greek:
                 return shift.isOn() ? greekKeys[key] : greekShiftKeys[key]
             case .math:
-                return shift.isOn() ? defaultKeys[key] : defaultShiftKeys[key]
+                return mathKeys[key]
             }
         }()
 
+        print("[BRACKET] key: \(key), resolved char: \(String(describing: char)), mode: \(keyboardMode.current), shift: \(shift.state)")
         if let char = char {
-            insert(char)
+            KeyboardInputController.insertText(char, proxy: proxy)
             moveCursorLeft()
         }
     }

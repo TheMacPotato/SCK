@@ -17,9 +17,19 @@ import SwiftUI
 // MARK: - カスタムキーボードのメインコントローラー
 // `UIInputViewController` を継承して、システムキーボードの代わりとなるViewを提供する
 class KeyboardViewController: UIInputViewController{
+    private let shift = ShiftState()
+    private let keyboardMode = KeyboardMode()
+    private lazy var keyboardContext = KeyboardActionContext(shift: shift, keyboardMode: keyboardMode)
+        
+    
     // MARK: - 初期処理
     override func viewDidLoad() {
         setup()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        keyboardContext.inputProxy = self.textDocumentProxy
     }
     
     // MARK: - キーボードUIのセットアップ
@@ -37,7 +47,10 @@ class KeyboardViewController: UIInputViewController{
             needsInputModeSwitchKey: needsInputModeSwitchKey,
             nextKeyboardAction: nextKeyboardAction
         )
-        .BackgroundColor(.clear) // 背景を透明に設定
+        .environmentObject(shift)
+        .environmentObject(keyboardMode)
+        .environmentObject(keyboardContext)
+        .BackgroundColor(.clear)
     }
     
     /// SwiftUIキーボードビューをUIKitのビュー階層に組み込む
