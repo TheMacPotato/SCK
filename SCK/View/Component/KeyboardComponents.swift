@@ -16,7 +16,7 @@ struct KeyRow: View {
     @EnvironmentObject var actionContext: KeyboardActionContext // 各種入力アクション（テキスト挿入・削除・カーソル移動など）をまとめた共有オブジェクト
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             // 各キーをButtonとして生成
             ForEach(keys, id: \.self) { key in
                 let isKeyEnable = KeyboardActions(mode: mode, isShiftOn: isShift).isValidKey(key)
@@ -26,7 +26,9 @@ struct KeyRow: View {
                         .foregroundColor(isKeyEnable ? Color.white : Color.black)    // 文字色
                         .background(isKeyEnable ? Color.gray : Color.black.opacity(0.6))         // 背景色
                         .clipShape(RoundedRectangle(cornerRadius: 4))               // 角丸キー
+                        .padding(.horizontal, 4)
                 }
+                .contentShape(Rectangle())
                 .disabled(!isKeyEnable)
             }
         }
@@ -45,7 +47,7 @@ struct OperatorRow: View {
     
     var body: some View {
 
-        HStack {
+        HStack(spacing: 0) {
             // 演算子群を表示（opActionで処理）
             KeyRow(keys: opKeys,
             mode: mode,
@@ -60,7 +62,9 @@ struct OperatorRow: View {
                         .foregroundColor(isKeyEnable ? Color.white : Color.black)    // 文字色
                         .background(isKeyEnable ? Color.gray : Color.black.opacity(0.6))         // 背景色
                         .clipShape(RoundedRectangle(cornerRadius: 4))
+                        .padding(.horizontal, 4)
                 }
+                .contentShape(Rectangle())
             }
         }
     }
