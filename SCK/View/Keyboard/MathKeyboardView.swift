@@ -100,6 +100,15 @@ struct MathKeyboardView: View {
 
 // MARK: - プレビュー（開発用）
 #Preview {
+    let shift = ShiftState()
+    let keyboardMode = KeyboardMode()
+    let context = KeyboardActionContext(
+        shift: shift,
+        keyboardMode: keyboardMode
+    )
+
     MathKeyboardView()
-    .environmentObject(ShiftState())
+        .environmentObject(shift)
+        .environmentObject(keyboardMode)
+        .environmentObject(context)
 }

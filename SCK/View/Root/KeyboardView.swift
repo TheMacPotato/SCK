@@ -19,66 +19,47 @@ struct KeyboardView: View {
     @EnvironmentObject private var keyboardMode: KeyboardMode
     @EnvironmentObject var actionContext: KeyboardActionContext // 各種入力アクション（テキスト挿入・削除・カーソル移動など）をまとめた共有オブジェクト
     
+    let defaultKeyboard: some View = DefaultKeyboardView()
+    let superscriptKeyboard: some View = SuperscriptKeyboardView()
+    let subscriptKeyboard: some View = SubscriptKeyboardView()
+    let greekKeyboard: some View = GreekKeyboardView()
+    let mathKeyboard: some View = MathKeyboardView()
+    
     var body: some View {
-        
-        VStack{
-            // 現在のキーボードモードに応じて適切なサブキーボードを表示
-            switch keyboardMode.current {
-            case .default:
-                DefaultKeyboardView()
-                    .environmentObject(keyboardMode)
-                    .environmentObject(shift)
-
-            case .superscript:
-                SuperscriptKeyboardView()
-                    .environmentObject(keyboardMode)
-                    .environmentObject(shift)
-
-            case .subscriptMode:
-                SubscriptKeyboardView()
-                    .environmentObject(keyboardMode)
-                    .environmentObject(shift)
-
-            case .greek:
-                GreekKeyboardView()
-                    .environmentObject(keyboardMode)
-                    .environmentObject(shift)
-
-            case .math:
-                MathKeyboardView()
-                    .environmentObject(keyboardMode)
-                    .environmentObject(shift)
+        VStack {
+            ZStack {
+                defaultKeyboard
+                    .opacity(keyboardMode.current == .default ? 1 : 0)
+                superscriptKeyboard
+                    .opacity(keyboardMode.current == .superscript ? 1 : 0)
+                subscriptKeyboard
+                    .opacity(keyboardMode.current == .subscriptMode ? 1 : 0)
+                greekKeyboard
+                    .opacity(keyboardMode.current == .greek ? 1 : 0)
+                mathKeyboard
+                    .opacity(keyboardMode.current == .math ? 1 : 0)
             }
-            // 下部のツールバー（モード切替ボタン、スペース、カーソル移動など）
-            HStack{
+            .environmentObject(keyboardMode)
+            .environmentObject(shift)
+
+            HStack {
                 if needsInputModeSwitchKey {
-                    // 地球儀ボタン（次のキーボードへ切り替え）
                     NextKeyboardButton(systemName: "globe",
                                        action: nextKeyboardAction)
                     .frame(width: 25, height: 30)
                     .background(.black)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
+                Picker("キーボード", selection: $keyboardMode.current) {
+                    Image(systemName: "character").tag(KeyboardMode.Mode.default)
+                    Image(systemName: "textformat.subscript").tag(KeyboardMode.Mode.subscriptMode)
+                    Image(systemName: "textformat.superscript").tag(KeyboardMode.Mode.superscript)
+                    Text("θ").tag(KeyboardMode.Mode.greek)
+                    Text("∫").tag(KeyboardMode.Mode.math)
+                }
+                .pickerStyle(.segmented)
 
-                // キーボードモード切り替えボタン群（現在のモードは灰色背景）
-                KeyboardModeButton(mode: .default, currentMode: keyboardMode.current, setMode: { keyboardMode.current = $0 }) {
-                    AnyView(Image(systemName: "character"))
-                }
-                KeyboardModeButton(mode: .subscriptMode, currentMode: keyboardMode.current, setMode: { keyboardMode.current = $0 }) {
-                    AnyView(Image(systemName: "textformat.subscript"))
-                }
-                KeyboardModeButton(mode: .superscript, currentMode: keyboardMode.current, setMode: { keyboardMode.current = $0 }) {
-                    AnyView(Image(systemName: "textformat.superscript"))
-                }
-                KeyboardModeButton(mode: .greek, currentMode: keyboardMode.current, setMode: { keyboardMode.current = $0 }) {
-                    AnyView(Text("θ"))
-                }
-                KeyboardModeButton(mode: .math, currentMode: keyboardMode.current, setMode: { keyboardMode.current = $0 }) {
-                    AnyView(Text("∫"))
-                }
-
-                // カーソル移動・スペース・改行などの操作ボタン
-                Button(){
+                Button {
                     actionContext.moveCursorLeft()
                 } label: {
                     Image(systemName: "chevron.backward")
@@ -89,7 +70,7 @@ struct KeyboardView: View {
 
                 SpaceKey()
 
-                Button(){
+                Button {
                     actionContext.moveCursorRight()
                 } label: {
                     Image(systemName: "chevron.forward")
@@ -97,6 +78,7 @@ struct KeyboardView: View {
                         .background(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
+
                 EnterKey()
             }
         }
