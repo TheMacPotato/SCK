@@ -19,37 +19,37 @@ final class KeyboardActionContext: ObservableObject {
         self.keyboardMode = keyboardMode
     }
     
-    func insert(_ text: String) {
+    @MainActor func insert(_ text: String) {
         guard let proxy = inputProxy else { return }
         print("[INSERT] text: \(text), mode: \(keyboardMode.current), shift: \(shift.state)")
         KeyboardInputController.insertText(KeyboardActions(mode: keyboardMode.current, isShiftOn: shift.isOn()).keyDictionary[text] ?? "nope", proxy: proxy)
     }
     
-    func enter() {
+    @MainActor func enter() {
         guard let proxy = inputProxy else { return }
         KeyboardInputController.insertText("\n", proxy: proxy)
     }
     
-    func space() {
+    @MainActor func space() {
         guard let proxy = inputProxy else { return }
         KeyboardInputController.insertText(" ", proxy: proxy)
     }
 
-    func delete() {
+    @MainActor func delete() {
         guard let proxy = inputProxy else { return }
         KeyboardInputController.deleteText(proxy: proxy)
     }
 
-    func moveCursorLeft() {
+    @MainActor func moveCursorLeft() {
         guard let proxy = inputProxy else { return }
         KeyboardInputController.moveCursorLeft(proxy: proxy)
     }
     
-    func moveCursorRight() {
+    @MainActor func moveCursorRight() {
         guard let proxy = inputProxy else { return }
         KeyboardInputController.moveCursorRight(proxy: proxy)
     }
-    func bracket(_ key: String) {
+    @MainActor func bracket(_ key: String) {
         guard let proxy = inputProxy else { return }
         
         let char: String? = {

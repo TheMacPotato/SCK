@@ -30,7 +30,9 @@ public struct DeleteButton: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             if isPressing {
                                 deleteTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-                                    actionContext.delete()
+                                    Task { @MainActor in
+                                        actionContext.delete()
+                                    }
                                 }
                             }
                         }
